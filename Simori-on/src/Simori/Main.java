@@ -1,3 +1,4 @@
+package Simori;
 
 public class Main {
 	

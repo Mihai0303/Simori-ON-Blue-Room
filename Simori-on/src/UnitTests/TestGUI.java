@@ -1,3 +1,4 @@
+package UnitTests;
 import static org.junit.Assert.*;
 
 import java.awt.event.WindowEvent;
@@ -5,6 +6,8 @@ import java.awt.event.WindowEvent;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+
+import Simori.GUI;
 
 
 /**
@@ -154,4 +157,4 @@ public class TestGUI {
 	public final void testLoadLayer() {
 	}
 
-}*/
+}

@@ -1,3 +1,4 @@
+package Simori;
 import java.awt.Color;
 import java.io.IOException;
 import java.io.InputStream;
