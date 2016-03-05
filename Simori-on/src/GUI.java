@@ -1,4 +1,11 @@
 import java.awt.Color;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.ObjectInputStream;
+import java.io.OutputStream;
+import java.net.ServerSocket;
+import java.net.Socket;
+import java.io.ObjectOutputStream;
 
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -15,9 +22,6 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.JToggleButton;
 import javax.swing.Timer;
-
-import java.net.ServerSocket;
-import java.net.Socket;
 
 public class GUI extends JFrame{
 
@@ -57,7 +61,8 @@ public class GUI extends JFrame{
 	 private static Instrument[] instruments = bank.getInstruments();
 	 
 	 private static Timer timer;
-
+	 private final static int PORT = 20160;
+	 final static String HOST = "127.0.0.1";
 	 
 	 public static int currentMode = 0;
 	private static Boolean[][][] contents;
@@ -656,11 +661,33 @@ public class GUI extends JFrame{
 		return contents;
 	}
 	
-	/*public static void master() throws IOException{
-		ServerSocket ss = new ServerSocket (port);
-		while(true){
-			Socket s = ss.accept();
-			InputStream 
-		}
-	}*/
+	public static void master(){
+		try{	
+			ServerSocket ss = new ServerSocket(PORT);
+			while(true){
+				Socket s = ss.accept();
+				Layer[] layers = GUI.Layers;
+				try{
+					InputStream in = s.getInputStream();
+					OutputStream out = s.getOutputStream();
+					ObjectOutputStream writer = new ObjectOutputStream(out);
+					writer.writeObject(layers);
+				}catch(IOException e){}
+			}}
+		catch(IOException e){}
+	}
+	
+	public static void slave() throws IOException{
+		try{
+			Socket s = new Socket(HOST, PORT);
+			try{	
+				InputStream in = s.getInputStream();
+				OutputStream out = s.getOutputStream();
+				ObjectInputStream reader = new ObjectInputStream(in);
+				Layer[] layers = (Layer[]) reader.readObject();
+				GUI.Layers = layers;
+			}catch(Exception e){}
+			s.close();
+		}catch(IOException e){}
+	}
 }

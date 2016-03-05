@@ -118,6 +118,7 @@ public class ChangeModeListener implements ActionListener{
 	    	case R4:
 	    		if(button.isSelected()){
 	    			GUI.currentMode = SLAVEMASTERMODE;
+	    			SlaveMaster sm = new SlaveMaster();
 	    		}
 	    		else{
 	    			GUI.currentMode = PERFORMANCEMODE;
