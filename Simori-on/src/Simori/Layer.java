@@ -1,11 +1,11 @@
 package Simori;
-import java.util.ArrayList;
+//import java.util.ArrayList;
 
-import javax.sound.midi.Instrument;
+//import javax.sound.midi.Instrument;
 import javax.sound.midi.MidiChannel;
 import javax.sound.midi.MidiSystem;
 import javax.sound.midi.MidiUnavailableException;
-import javax.sound.midi.Soundbank;
+//import javax.sound.midi.Soundbank;
 import javax.sound.midi.Synthesizer;
 
 /**
@@ -25,10 +25,8 @@ public class Layer implements Runnable {
 	
 	Synthesizer synth;
 	MidiChannel[] channels;
-
-
-	 
-	 
+	
+	
 	/**
 	 * Constructor for the Layer object. 
 	 * Sets up a two dimensional array and initializes the
@@ -120,7 +118,7 @@ public class Layer implements Runnable {
 			}
 		}
 		
-		if(GUI.clockHandPosition == GUI.getLoopPoint()) 
+		if(GUI.clockHandPosition == ChangeLoopPoint.getLoopPoint()) 
 			channels[1].allNotesOff();
 		}
 		return;

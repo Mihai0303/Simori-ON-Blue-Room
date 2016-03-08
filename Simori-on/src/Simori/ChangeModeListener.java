@@ -30,28 +30,28 @@ public class ChangeModeListener implements ActionListener{
         JToggleButton button = (JToggleButton) e.getSource();
         if(GUI.currentMode != PERFORMANCEMODE) GUI.clearBoard();
         if(button.isSelected())
-            GUI.disableMenuButtons(button);
+        	OnOff.disableMenuButtons(button);
         else
-            GUI.enableMenuButtons();
+        	OnOff.enableMenuButtons();
     
         
         
         switch(ButtonText.valueOf(button.getText())){
 	    	case ON:
 	    		if(button.isSelected()){
-	    			GUI.enableGridButtons();
-	    			GUI.enableMenuButtons();
-	    			GUI.startClockHand();
+	    			OnOff.enableGridButtons();
+	    			OnOff.enableMenuButtons();
+	    			ClockHand.startClockHand();
 	    			GUI.setClockHandVisible(true);
-	    			GUI.startThreads();
+	    			OnOff.startThreads();
 	    			GUI.currentMode = PERFORMANCEMODE;
 	    		}
 	    		else{
-	    			GUI.disableGridButtons();
-	    			GUI.disableMenuButtons();
+	    			OnOff.disableGridButtons();
+	    			OnOff.disableMenuButtons();
 	    			GUI.clearBoard();
 	    			GUI.clearLayers();
-	    			GUI.stopThreads();
+	    			OnOff.stopThreads();
 	    			GUI.setClockHandVisible(false);
 	    			GUI.currentMode = ONOFFMODE;
 	    		}
@@ -130,25 +130,25 @@ public class ChangeModeListener implements ActionListener{
 	    		
 	    		
 	    		if(GUI.currentMode == CHANGEVOICEMODE){
-                    GUI.setInstrument(GUI.getTempInstrument());
+                    ChangeVoiceMode.setInstrument(ChangeVoiceMode.getTempInstrument());
                 }
                 if(GUI.currentMode == CHANGEVELOCITYMODE){
-                    GUI.setVelocity(GUI.getTempVelocity());
+                    ChangeVelocity.setVelocity(ChangeVelocity.getTempVelocity());
                 }
                 if(GUI.currentMode == CHANGELOOPSPEEDMODE){
-                    GUI.setLoopSpeed(GUI.getTempLoopSpeed());
+                    ChangeLoopSpeed.setLoopSpeed(ChangeLoopSpeed.getTempLoopSpeed());
                 }
                 if(GUI.currentMode == CHANGELOOPPOINTMODE){
-                	GUI.setLoopPoint(GUI.getTempLoopPoint());
+                	ChangeLoopPoint.setLoopPoint(ChangeLoopPoint.getTempLoopPoint());
                 }
                 if(GUI.currentMode == CHANGELAYERMODE){
-                	GUI.setCurrentLayer(GUI.getTempLayer());
-                	GUI.loadLayer(GUI.getCurrentLayer());
+                	ChangeLayer.setCurrentLayer(ChangeLayer.getTempLayer());
+                	ChangeLayer.loadLayer(ChangeLayer.getCurrentLayer());
                 }
                 GUI.currentMode = PERFORMANCEMODE;
-                GUI.enableMenuButtons();
+                OnOff.enableMenuButtons();
                 GUI.clearMenuButtons(null);
-                GUI.loadLayer(GUI.getCurrentLayer());
+                ChangeLayer.loadLayer(ChangeLayer.getCurrentLayer());
 	    		break;
 	    		
         }

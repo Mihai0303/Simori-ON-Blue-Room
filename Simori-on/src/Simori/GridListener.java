@@ -44,26 +44,26 @@ public class GridListener implements ActionListener{
         		// if the button is selected changes it to true and if it is de-selected
         		// sets it to false
         		if(buttonPressed.isSelected()){
-        			GUI.getLayers(GUI.getCurrentLayer()).setContents(x,y,true);
+        			ChangeLayer.getLayers(ChangeLayer.getCurrentLayer()).setContents(x,y,true);
         		}
         		else
-        			GUI.getLayers(GUI.getCurrentLayer()).setContents(x,y,false);
+        			ChangeLayer.getLayers(ChangeLayer.getCurrentLayer()).setContents(x,y,false);
         		break;
         	case CHANGEVOICEMODE:
-        		GUI.setTempInstrument(x,y);
+        		ChangeVoiceMode.setTempInstrument(x,y);
         		break;
         	case CHANGEVELOCITYMODE:
-        		GUI.setTempVelocity(x, y);
+        		ChangeVelocity.setTempVelocity(x, y);
         		break;
         	case CHANGELOOPSPEEDMODE:
-        		GUI.setTempLoopSpeed(x,y);
+        		ChangeLoopSpeed.setTempLoopSpeed(x,y);
         		break;
         	case CHANGELOOPPOINTMODE:
-        		GUI.setTempLoopPoint(x,y);
+        		ChangeLoopPoint.setTempLoopPoint(x,y);
         		break;
         	case CHANGELAYERMODE:
-        		GUI.setTempLayer(x,y);
-        		System.out.println(GUI.getCurrentLayer());
+        		ChangeLayer.setTempLayer(x,y);
+        		System.out.println(ChangeLayer.getCurrentLayer());
         		break;
         	case SAVECONFIGURATIONMODE:
         		break;
