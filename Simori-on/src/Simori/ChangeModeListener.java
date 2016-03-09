@@ -154,6 +154,12 @@ public class ChangeModeListener implements ActionListener{
                 	ChangeLayer.setCurrentLayer(ChangeLayer.getTempLayer());
                 	ChangeLayer.loadLayer(ChangeLayer.getCurrentLayer());
                 }
+                if(GUI.currentMode == SAVECONFIGURATIONMODE){
+                	SaveLoad.save();
+                }
+                if(GUI.currentMode == LOADCONFIGURATIONMODE){
+                	SaveLoad.load();
+                }
                 GUI.currentMode = PERFORMANCEMODE;
                 OnOff.enableMenuButtons();
                 GUI.clearMenuButtons(null);

@@ -66,8 +66,10 @@ public class GridListener implements ActionListener{
         		System.out.println(ChangeLayer.getCurrentLayer());
         		break;
         	case SAVECONFIGURATIONMODE:
+        		SaveLoad.setFileName(x,y);
         		break;
         	case LOADCONFIGURATIONMODE:
+        		SaveLoad.setFileName(x, y);
         		break;
         	case SLAVEMASTERMODE:
         		break;

@@ -263,4 +263,10 @@ public class GUI extends JFrame{
 		return contents;
 	}
 	
+	public static void setContents(Boolean[][][] newContents){
+		contents = newContents;
+	}
+	
+	
+	
 }
