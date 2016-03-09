@@ -3,7 +3,7 @@ package Simori;
 public class ChangeLoopSpeed {
 
 	 // the temporary and permanent values of the loop speed
-	 static int loopSpeed = 100;
+	 private static int loopSpeed = 100;
 	 private static int tempLoopSpeed;
 
 	/**
@@ -47,9 +47,19 @@ public class ChangeLoopSpeed {
 	 * @author Ollie McLean
 	 */
 	public static void setLoopSpeed(int ls) {
-		loopSpeed = ls*10;
+		int nls = 159 - ls;
+		loopSpeed = nls*3;
 		GUI.timer.setDelay(loopSpeed);
 		
+	}
+	
+	/**
+	 * Gets the loop speed
+	 * @return Loop speed
+	 * @author Ollie McLean
+	 */
+	public static int getLoopSpeed(){
+		return loopSpeed;
 	}
 	
 }

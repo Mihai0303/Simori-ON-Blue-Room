@@ -49,6 +49,7 @@ public class ChangeModeListener implements ActionListener{
 	    		else{
 	    			OnOff.disableGridButtons();
 	    			OnOff.disableMenuButtons();
+	    			GUI.clearMenuButtons(null);
 	    			GUI.clearBoard();
 	    			GUI.clearLayers();
 	    			OnOff.stopThreads();

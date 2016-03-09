@@ -62,7 +62,7 @@ public class ClockHand {
 			
 		};
 		
-		GUI.timer = new Timer(ChangeLoopSpeed.loopSpeed, ClockTimerPerformer);
+		GUI.timer = new Timer(ChangeLoopSpeed.getLoopSpeed(), ClockTimerPerformer);
 		GUI.timer.start();
 		
 		
