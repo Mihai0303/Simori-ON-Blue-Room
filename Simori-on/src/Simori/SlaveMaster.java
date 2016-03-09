@@ -54,6 +54,7 @@ public class SlaveMaster extends JFrame implements ActionListener {
 				OutputStream out = s.getOutputStream();
 				ObjectInputStream reader = new ObjectInputStream(in);
 				Layer[] layers = (Layer[]) reader.readObject();
+				System.out.println(layers);
 				ChangeLayer.Layers = layers;
 			}catch(Exception e){}
 			s.close();
@@ -96,7 +97,7 @@ public class SlaveMaster extends JFrame implements ActionListener {
 		if(slaveButton.isSelected()){
 			try {
 				slave();
-				 System.exit(0);
+				System.exit(0);
 			} catch (IOException e1) {
 				e1.printStackTrace();
 			}

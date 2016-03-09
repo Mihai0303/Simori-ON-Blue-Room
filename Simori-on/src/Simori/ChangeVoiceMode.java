@@ -50,7 +50,7 @@ public class ChangeVoiceMode {
 	 * @author Nicholas Higgins
 	 */
 	public static void setInstrument(int ch) {
-		ChangeLayer.Layers[ChangeLayer.currentLayer].setInstrument(ch);
+		ChangeLayer.Layers[ChangeLayer.getCurrentLayer()].setInstrument(ch);
 	}
 	
 	

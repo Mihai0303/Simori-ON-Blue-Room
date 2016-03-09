@@ -50,7 +50,7 @@ public class ChangeVelocity {
 	 * @author Mihai Bratosin
 	 */
 	public static void setVelocity(int vl) {
-		ChangeLayer.Layers[ChangeLayer.currentLayer].setVelocity(vl);
+		ChangeLayer.Layers[ChangeLayer.getCurrentLayer()].setVelocity(vl);
 	}
 	
 }

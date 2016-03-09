@@ -6,7 +6,7 @@ public class ChangeLayer {
 	
 	 // a variable for storing 
 	 private static int tempLayer;
-	static int currentLayer;
+	 private static int currentLayer;
 
 	/**
 	 * Sets the temporary value of the current layer based on the
