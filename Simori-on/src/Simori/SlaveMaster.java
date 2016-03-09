@@ -35,10 +35,14 @@ public class SlaveMaster extends JFrame implements ActionListener {
 			ServerSocket ss = new ServerSocket(PORT);
 			while(true){
 				Socket s = ss.accept();
-				Layer[] layers = ChangeLayer.Layers;
+				Boolean[][][] newArray = new Boolean[16][16][16];
+				for(int i=0;i<16;i++){
+							newArray[i] = ChangeLayer.getLayers(i).contents;
+				}
 				OutputStream out = s.getOutputStream();
 				ObjectOutputStream writer = new ObjectOutputStream(out);
-				writer.writeObject(layers);
+				writer.writeObject(newArray);
+				break;
 			}}
 		catch(IOException e){}
 	}
@@ -50,9 +54,11 @@ public class SlaveMaster extends JFrame implements ActionListener {
 				InputStream in = s.getInputStream();
 				OutputStream out = s.getOutputStream();
 				ObjectInputStream reader = new ObjectInputStream(in);
-				Layer[] layers = (Layer[]) reader.readObject();
-				System.out.println(layers);
-				ChangeLayer.Layers = layers;
+				Boolean[][][] newArray = (Boolean[][][]) reader.readObject();
+				for(int i=0;i<16;i++){
+					ChangeLayer.Layers[i].contents = newArray[i];
+				}
+				ChangeLayer.loadLayer(ChangeLayer.getCurrentLayer());
 			}catch(Exception e){}
 			s.close();
 		}catch(IOException e){}
@@ -94,14 +100,14 @@ public class SlaveMaster extends JFrame implements ActionListener {
 		if(slaveButton.isSelected()){
 			try {
 				slave();
-				System.exit(0);
+				this.dispose();
 			} catch (IOException e1) {
 				e1.printStackTrace();
 			}
 		}
 		else if(masterButton.isSelected()){
 			master();
-			 System.exit(0);
+			 this.dispose();
 		}
 		else{
 			JOptionPane.showMessageDialog(null, "Nothing selected");

@@ -2,6 +2,8 @@ package Simori;
 //import java.util.ArrayList;
 
 //import javax.sound.midi.Instrument;
+import java.io.Serializable;
+
 import javax.sound.midi.MidiChannel;
 import javax.sound.midi.MidiSystem;
 import javax.sound.midi.MidiUnavailableException;
@@ -17,7 +19,7 @@ import javax.sound.midi.Synthesizer;
  */
 public class Layer implements Runnable {
 	
-	private Boolean[][] contents;
+	Boolean[][] contents;
 	private int instrument = 111;
 	private int velocity = 40;
 	// determines when the thread stops
@@ -153,9 +155,10 @@ public class Layer implements Runnable {
 	 * @param a The value to be set
 	 * @author Mihai Bratosin
 	 */
-	public void setContents(int i,int j, boolean a){
+	public void setContents(int i, int j, boolean a){
 		this.contents[i][j] = a;
 	}
+	
 	public Boolean[][] getContentArray(){
 		return this.contents;
 	}

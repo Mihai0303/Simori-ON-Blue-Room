@@ -52,7 +52,6 @@ public class GUI extends JFrame{
 
 	 
 	 public static int currentMode = 0;
-	 private static Boolean[][][] contents;
 	 
 	 /**
 	  * Sets up the GUI for the board. Creates the 16x16 grid of buttons,
@@ -71,8 +70,6 @@ public class GUI extends JFrame{
 				
 		ActionListener modeListener = new ChangeModeListener();
 		ActionListener gridListener = new GridListener();
-		
-
 
 		
 		for(int i = 0; i < display.length; i++){
@@ -216,8 +213,6 @@ public class GUI extends JFrame{
 		
 	}
 	
-
-	
 	/**
 	 * Sets all the menu buttons to unselected other than 
 	 * the button passed as an argument
@@ -248,23 +243,6 @@ public class GUI extends JFrame{
 		for(int i=0;i<ChangeLayer.Layers.length;i++){
 			ChangeLayer.Layers[i].clear();
 			}
-	}
-	
-	/**
-	 * Returns the full contents of the 16 layers
-	 * @return the contents of all the layers of the board
-	 * @author Nicholas Higgins
-	 */
-	public static Boolean[][][] allContents(){
-		contents = null;
-		for(int i =0;i<ChangeLayer.Layers.length;i++){
-			contents[i] = ChangeLayer.Layers[i].getContentArray();
-		}
-		return contents;
-	}
-	
-	public static void setContents(Boolean[][][] newContents){
-		contents = newContents;
 	}
 	
 	

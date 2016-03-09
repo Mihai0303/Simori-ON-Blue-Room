@@ -1,12 +1,14 @@
 package Simori;
 
-public class ChangeLayer {
+import java.io.Serializable;
+
+public class ChangeLayer{
 	
 	public static Layer[] Layers = new Layer[16];
 	
 	 // a variable for storing 
 	 private static int tempLayer;
-	 private static int currentLayer;
+	 static int currentLayer;
 
 	/**
 	 * Sets the temporary value of the current layer based on the

@@ -11,12 +11,23 @@ public class SaveLoad {
 		try{
 			FileOutputStream fos = new FileOutputStream(GUI.textField.getText() + ".song");
 			ObjectOutputStream oos = new ObjectOutputStream(fos);
-			oos.writeObject(GUI.allContents());
+			Boolean[][][] newArray = new Boolean[16][16][16];
+			for(int i=0;i<16;i++){
+						newArray[i] = ChangeLayer.getLayers(i).contents;
+			}
+			oos.writeObject(newArray);
 			System.out.println("saved");
 		}
 		catch(Exception e){
-			
+			e.printStackTrace();
 		}
+		
+		System.out.println("The contents of the first layer before serialization are:");
+			for(int j = 0; j < 16; j++){			
+				for(int k = 0; k < 16; k++){
+					System.out.println(ChangeLayer.Layers[0].contents[j][k]);
+				}
+			}
 		
 	}
 
@@ -29,10 +40,24 @@ public class SaveLoad {
 			newArray = (Boolean[][][]) iis.readObject();
 			System.out.println("loaded");
 		} catch (Exception e){
-			
+			System.out.println(" SOME ERROR OCCURRED");
+			e.printStackTrace();
 		}
 		
-		GUI.setContents(newArray);
+	
+		System.out.println(newArray);
+		for(int i=0;i<16;i++){
+			ChangeLayer.Layers[i].contents = newArray[i];
+		}
+		
+		System.out.println("The contents of the first layer after serialization are:");
+			for(int j = 0; j < 16; j++){			
+				for(int k = 0; k < 16; k++){
+					System.out.println(newArray[0]);
+				}
+		}
+		
+		ChangeLayer.loadLayer(ChangeLayer.currentLayer);
 		
 	}
 	
@@ -42,8 +67,8 @@ public class SaveLoad {
 		GUI.textField.setText(addCharToTempFileName(x, y));
 		System.out.println("x: " + x + " y: " + y);
 		
-		for(int i = 0; i < GUI.display[i].length; i++){
-			for(int j = 0; j < GUI.display[i].length; j++){
+		for(int i = 0; i < 16; i++){
+			for(int j = 0; j < 16; j++){
 				if(j==x || i == y){
 					GUI.display[i][j].setSelected(true);
 				}

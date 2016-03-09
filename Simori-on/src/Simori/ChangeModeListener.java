@@ -91,6 +91,7 @@ public class ChangeModeListener implements ActionListener{
 	    	case L4:
 	    		if(button.isSelected()){
 	    			GUI.currentMode = CHANGELOOPPOINTMODE;
+	    			GUI.clearBoard();
 	    		}
 	    		else{
 	    			GUI.currentMode = PERFORMANCEMODE;
@@ -100,6 +101,7 @@ public class ChangeModeListener implements ActionListener{
 	    	case R1:
 	    		if(button.isSelected()){
 	    			GUI.currentMode = CHANGELAYERMODE;
+	    			GUI.clearBoard();
 	    		}
 	    		else{
 	    			GUI.currentMode = PERFORMANCEMODE;
@@ -109,6 +111,7 @@ public class ChangeModeListener implements ActionListener{
 	    	case R2:
 	    		if(button.isSelected()){
 	    			GUI.currentMode = SAVECONFIGURATIONMODE;
+	    			GUI.clearBoard();
 	    		}
 	    		else{
 	    			GUI.currentMode = PERFORMANCEMODE;
@@ -118,6 +121,7 @@ public class ChangeModeListener implements ActionListener{
 	    	case R3:
 	    		if(button.isSelected()){
 	    			GUI.currentMode = LOADCONFIGURATIONMODE;
+	    			GUI.clearBoard();
 	    		}
 	    		else{
 	    			GUI.currentMode = PERFORMANCEMODE;
@@ -159,6 +163,7 @@ public class ChangeModeListener implements ActionListener{
                 }
                 if(GUI.currentMode == LOADCONFIGURATIONMODE){
                 	SaveLoad.load();
+                	ChangeLayer.loadLayer(ChangeLayer.getCurrentLayer());
                 }
                 GUI.currentMode = PERFORMANCEMODE;
                 OnOff.enableMenuButtons();
