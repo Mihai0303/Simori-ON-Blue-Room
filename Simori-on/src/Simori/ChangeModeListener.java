@@ -65,6 +65,7 @@ public class ChangeModeListener implements ActionListener{
 	    		}
 	    		else{
 	    			GUI.currentMode = PERFORMANCEMODE;
+	    			ChangeLayer.loadLayer(ChangeLayer.getCurrentLayer());
 	    		}
 	    		break;
 	    	case L2:
@@ -74,6 +75,7 @@ public class ChangeModeListener implements ActionListener{
 	    		}
 	    		else{
 	    			GUI.currentMode = PERFORMANCEMODE;
+	    			ChangeLayer.loadLayer(ChangeLayer.getCurrentLayer());
 	    		}
 	    		break;
 	    	case L3:
@@ -83,6 +85,7 @@ public class ChangeModeListener implements ActionListener{
 	    		}
 	    		else{
 	    			GUI.currentMode = PERFORMANCEMODE;
+	    			ChangeLayer.loadLayer(ChangeLayer.getCurrentLayer());
 	    		}
 	    		break;
 	    	case L4:
@@ -91,6 +94,7 @@ public class ChangeModeListener implements ActionListener{
 	    		}
 	    		else{
 	    			GUI.currentMode = PERFORMANCEMODE;
+	    			ChangeLayer.loadLayer(ChangeLayer.getCurrentLayer());
 	    		}
 	    		break;
 	    	case R1:
@@ -99,6 +103,7 @@ public class ChangeModeListener implements ActionListener{
 	    		}
 	    		else{
 	    			GUI.currentMode = PERFORMANCEMODE;
+	    			ChangeLayer.loadLayer(ChangeLayer.getCurrentLayer());
 	    		}
 	    		break;
 	    	case R2:
@@ -107,6 +112,7 @@ public class ChangeModeListener implements ActionListener{
 	    		}
 	    		else{
 	    			GUI.currentMode = PERFORMANCEMODE;
+	    			ChangeLayer.loadLayer(ChangeLayer.getCurrentLayer());
 	    		}
 	    		break;
 	    	case R3:
@@ -115,6 +121,7 @@ public class ChangeModeListener implements ActionListener{
 	    		}
 	    		else{
 	    			GUI.currentMode = PERFORMANCEMODE;
+	    			ChangeLayer.loadLayer(ChangeLayer.getCurrentLayer());
 	    		}
 	    		break;
 	    	case R4:
@@ -124,6 +131,7 @@ public class ChangeModeListener implements ActionListener{
 	    		}
 	    		else{
 	    			GUI.currentMode = PERFORMANCEMODE;
+	    			ChangeLayer.loadLayer(ChangeLayer.getCurrentLayer());
 	    		}
 	    		break;
 	    	case OK:

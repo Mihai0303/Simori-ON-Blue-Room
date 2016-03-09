@@ -3,7 +3,7 @@ package Simori;
 public class ChangeLoopPoint {
 	
 	 // the temporary and permanent value of the loop point
-	 static int loopPoint = 15;
+	 private static int loopPoint = 15;
 	 private static int tempLoopPoint;
 
 	/**

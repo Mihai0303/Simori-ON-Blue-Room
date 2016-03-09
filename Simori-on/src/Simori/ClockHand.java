@@ -25,10 +25,10 @@ public class ClockHand {
 				if(GUI.clockHandPosition == 0){
 					
 				
-					GUI.display[0][ChangeLoopPoint.loopPoint].setBackground(GUI.DEFAULT);
-					GUI.display[5][ChangeLoopPoint.loopPoint].setBackground(GUI.DEFAULT);
-					GUI.display[10][ChangeLoopPoint.loopPoint].setBackground(GUI.DEFAULT);
-					GUI.display[15][ChangeLoopPoint.loopPoint].setBackground(GUI.DEFAULT);
+					GUI.display[0][ChangeLoopPoint.getLoopPoint()].setBackground(GUI.DEFAULT);
+					GUI.display[5][ChangeLoopPoint.getLoopPoint()].setBackground(GUI.DEFAULT);
+					GUI.display[10][ChangeLoopPoint.getLoopPoint()].setBackground(GUI.DEFAULT);
+					GUI.display[15][ChangeLoopPoint.getLoopPoint()].setBackground(GUI.DEFAULT);
 					
 					
 					
@@ -55,7 +55,7 @@ public class ClockHand {
 				
 			}
 			GUI.clockHandPosition++;
-				if(GUI.clockHandPosition > ChangeLoopPoint.loopPoint) GUI.clockHandPosition = 0;
+				if(GUI.clockHandPosition > ChangeLoopPoint.getLoopPoint()) GUI.clockHandPosition = 0;
 				
 				
 			}

@@ -36,12 +36,9 @@ public class SlaveMaster extends JFrame implements ActionListener {
 			while(true){
 				Socket s = ss.accept();
 				Layer[] layers = ChangeLayer.Layers;
-				try{
-					InputStream in = s.getInputStream();
-					OutputStream out = s.getOutputStream();
-					ObjectOutputStream writer = new ObjectOutputStream(out);
-					writer.writeObject(layers);
-				}catch(IOException e){}
+				OutputStream out = s.getOutputStream();
+				ObjectOutputStream writer = new ObjectOutputStream(out);
+				writer.writeObject(layers);
 			}}
 		catch(IOException e){}
 	}

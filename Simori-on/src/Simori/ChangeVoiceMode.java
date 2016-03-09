@@ -25,8 +25,8 @@ public class ChangeVoiceMode {
 				}
 				if(j==x && i == y){
 					if(x+y*16<128){
-						tempInstrument = i;
-						GUI.textField.setText(GUI.instruments[i].getName());
+						tempInstrument = j+i*16;
+						GUI.textField.setText(GUI.instruments[j+i*16].getName());
 					}
 					else{
 						GUI.textField.setText("No instrument");
