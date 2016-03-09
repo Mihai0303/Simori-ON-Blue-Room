@@ -1,9 +1,6 @@
 package Simori;
-import java.awt.Color;
-import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.WindowEvent;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.ObjectInputStream;
@@ -11,25 +8,28 @@ import java.io.ObjectOutputStream;
 import java.io.OutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.ArrayList;
-
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
-import javax.swing.JTextField;
-import javax.swing.JToggleButton;
 
+/**
+ * @author Airidas Juskaitis, Ollie McLean, Nicholas Higgins, Mihai Bratosin,
+ * Alonso-Lopez Mendoza
+ */
 public class SlaveMaster extends JFrame implements ActionListener {
 	
-	public static Boolean slaveMaster = false;
-	public final static int port = 20160;
+	private final static int PORT = 20160;
+	private final static String HOST = "127.0.0.1";
 	
-	 private final static int PORT = 20160;
-	 final static String HOST = "127.0.0.1";
-	  
+	/**
+	 * Opens a server socket and waits for a connection from a client.
+	 * Once the connection has been established sends over the output
+	 * stream a boolean three dimensional array representing all the layers
+	 * of the board.
+	 */
 	public static void master(){
 		try{	
 			ServerSocket ss = new ServerSocket(PORT);
@@ -37,36 +37,42 @@ public class SlaveMaster extends JFrame implements ActionListener {
 				Socket s = ss.accept();
 				Boolean[][][] newArray = new Boolean[16][16][16];
 				for(int i=0;i<16;i++){
-							newArray[i] = ChangeLayer.getLayers(i).contents;
+					newArray[i] = ChangeLayer.getLayer(i).contents;
 				}
 				OutputStream out = s.getOutputStream();
 				ObjectOutputStream writer = new ObjectOutputStream(out);
 				writer.writeObject(newArray);
 				break;
 			}}
-		catch(IOException e){}
-	}
-	
-	public static void slave() throws IOException{
-		try{
-			Socket s = new Socket(HOST, PORT);
-			try{	
-				InputStream in = s.getInputStream();
-				OutputStream out = s.getOutputStream();
-				ObjectInputStream reader = new ObjectInputStream(in);
-				Boolean[][][] newArray = (Boolean[][][]) reader.readObject();
-				for(int i=0;i<16;i++){
-					ChangeLayer.Layers[i].contents = newArray[i];
-				}
-				ChangeLayer.loadLayer(ChangeLayer.getCurrentLayer());
-			}catch(Exception e){}
-			s.close();
-		}catch(IOException e){}
+		catch(IOException e){
+			e.printStackTrace();
+		}
 	}
 	
 	/**
-	  * Sets up the GUI to select if  the user wants to be the slave or the master.
-	  * @author Nick Higgins
+	 * Connects to a server socket, reads a boolean three dimensional
+	 * array representing the layers of the master board and turns them
+	 * into its own layers
+	 */
+	public static void slave(){
+		try{
+			Socket s = new Socket(HOST, PORT);
+			InputStream in = s.getInputStream();
+			OutputStream out = s.getOutputStream();
+			ObjectInputStream reader = new ObjectInputStream(in);
+			Boolean[][][] newArray = (Boolean[][][]) reader.readObject();
+			for(int i=0;i<16;i++){
+				ChangeLayer.Layers[i].contents = newArray[i];
+			}
+			ChangeLayer.loadLayer(ChangeLayer.getCurrentLayer());
+			s.close();
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+	}
+	
+	/**
+	  * Sets up the GUI to select if the user wants to be the slave or the master.
 	  */
 	private JRadioButton slaveButton = new JRadioButton("Slave");
 	JRadioButton masterButton = new JRadioButton("Master");
@@ -94,16 +100,16 @@ public class SlaveMaster extends JFrame implements ActionListener {
 		this.setVisible(true);
 		this.add(central);
 		this.setLocationRelativeTo(null);
-		
 	}
+	
+	/**
+	 * When a button is pressed on the selection interface
+	 * the appropriate method is called (master or slave)
+	 */
 	public void actionPerformed(ActionEvent e) {
 		if(slaveButton.isSelected()){
-			try {
 				slave();
 				this.dispose();
-			} catch (IOException e1) {
-				e1.printStackTrace();
-			}
 		}
 		else if(masterButton.isSelected()){
 			master();
@@ -113,9 +119,9 @@ public class SlaveMaster extends JFrame implements ActionListener {
 			JOptionPane.showMessageDialog(null, "Nothing selected");
 		}
     }
+	
 	public static void main(String[] args){
-		SlaveMaster sm = new SlaveMaster();
-		
+		SlaveMaster sm = new SlaveMaster();		
 	}
 }
 	

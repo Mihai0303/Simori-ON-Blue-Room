@@ -8,7 +8,10 @@ import org.junit.Test;
 
 import Simori.ChangeLoopSpeed;
 import Simori.GUI;
-
+/**
+ * @author Airidas Juskaitis, Ollie McLean, Nicholas Higgins, Mihai Bratosin,
+ * Alonso-Lopez Mendoza
+ */
 public class ChangeLoopSpeedTest {
 	
 	private GUI a;
@@ -34,7 +37,6 @@ public class ChangeLoopSpeedTest {
 	/**
 	 * Test method for setTempLoopSpeed(int, int).
 	 * Test regular use of the method
-	 * @author Ollie McLean
 	 */
 	@Test
 	public final void testSetTempLoopSpeed() {
@@ -48,7 +50,6 @@ public class ChangeLoopSpeedTest {
 	 * Tests the method with an argument that represents
 	 * a value bigger than the one allowed. Temporary loop speed
 	 * should not be set
-	 * @author Ollie McLean
 	 */
 	@Test
 	public final void testSetTempLoopSpeedExceedMax() {

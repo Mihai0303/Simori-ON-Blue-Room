@@ -1,21 +1,16 @@
 package Simori;
-//import java.util.ArrayList;
-
-//import javax.sound.midi.Instrument;
-import java.io.Serializable;
 
 import javax.sound.midi.MidiChannel;
 import javax.sound.midi.MidiSystem;
 import javax.sound.midi.MidiUnavailableException;
-//import javax.sound.midi.Soundbank;
 import javax.sound.midi.Synthesizer;
 
 /**
  * Implements a Layer of the board as a two dimensional array
  * containing true for the buttons pressed in the layer and
  * false for the buttons that are not pushed 
- * @author Alonso Lopez Mendoza
- *
+ * @author Airidas Juskaitis, Ollie McLean, Nicholas Higgins, Mihai Bratosin,
+ * Alonso-Lopez Mendoza
  */
 public class Layer implements Runnable {
 	
@@ -35,7 +30,6 @@ public class Layer implements Runnable {
 	 * synthesizer for playing the sounds on the board.
 	 * Opens the synthesizer and sets up the array of 
 	 * channels for the board.
-	 * @author Alonso Lopez Mendoza 
 	 */
 	public Layer(){
 		contents = new Boolean[16][16];
@@ -62,7 +56,6 @@ public class Layer implements Runnable {
 	/**
 	 * Sets the value of done
 	 * @param d True if the loop should finish playing
-	 * @author Mihai Bratosin
 	 */
 	public void setDone(boolean d){
 		done = d;
@@ -71,7 +64,6 @@ public class Layer implements Runnable {
 	/**
 	 * Sets the velocity of the layer
 	 * @param v The velocity to be set
-	 * @author Mihai Bratosin
 	 */
 	public void setVelocity(int v){
 		velocity = v;
@@ -81,7 +73,6 @@ public class Layer implements Runnable {
 	 * Returns the instrument that the current layer is
 	 * playing
 	 * @return The instrument currently playing
-	 * @author Alonso Lopez Mendoza
 	 */
 	public int getInstrument(){ 
 		return instrument;
@@ -90,7 +81,6 @@ public class Layer implements Runnable {
 	/**
 	 * Sets the instrument for the current layer
 	 * @param i The instrument for the current layer
-	 * @author Alonso Lopez Mendoza
 	 */
 	public void setInstrument(int i){
 		instrument = i;
@@ -109,7 +99,7 @@ public class Layer implements Runnable {
 			
 			for(int j = 0; j < contents[i].length; j++){
 				
-				int realCHP = GUI.clockHandPosition;
+				int realCHP = GUI.getClockHandPosition();
 				if(realCHP == 16) realCHP = 15;
 
 				if(contents[realCHP][j]){
@@ -120,7 +110,7 @@ public class Layer implements Runnable {
 			}
 		}
 		
-		if(GUI.clockHandPosition == ChangeLoopPoint.getLoopPoint()) 
+		if(GUI.getClockHandPosition() == ChangeLoopPoint.getLoopPoint()) 
 			channels[1].allNotesOff();
 		}
 		return;
@@ -129,7 +119,6 @@ public class Layer implements Runnable {
 	/**
 	 * Clears the entire contents of the layer.
 	 * Sets all values to false
-	 * @author Mihai Bratosin
 	 */
 	public void clear(){
 		for(int i = 0; i < contents.length; i++){			
@@ -144,7 +133,6 @@ public class Layer implements Runnable {
 	 * contents array
 	 * @return The value at the i, j position in the
 	 * array representing the layer
-	 * @author Mihai Bratosin
 	 */
 	public boolean getContents(int i, int j){
 		return this.contents[i][j];
@@ -153,12 +141,14 @@ public class Layer implements Runnable {
 	/**
 	 * Sets the value for the i, j position in the array
 	 * @param a The value to be set
-	 * @author Mihai Bratosin
 	 */
 	public void setContents(int i, int j, boolean a){
 		this.contents[i][j] = a;
 	}
 	
+	/**
+	 * @return The array representing the contents of the layer
+	 */
 	public Boolean[][] getContentArray(){
 		return this.contents;
 	}

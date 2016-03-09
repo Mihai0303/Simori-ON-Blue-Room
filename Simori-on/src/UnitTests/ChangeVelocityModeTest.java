@@ -8,7 +8,10 @@ import org.junit.Test;
 
 import Simori.ChangeVelocity;
 import Simori.GUI;
-
+/**
+ * @author Airidas Juskaitis, Ollie McLean, Nicholas Higgins, Mihai Bratosin,
+ * Alonso-Lopez Mendoza
+ */
 public class ChangeVelocityModeTest {
 	
 	private GUI a;
@@ -34,7 +37,6 @@ public class ChangeVelocityModeTest {
 	/**
 	 * Test method for setTempVelocity(int, int).
 	 * Tests a normal use of the method
-	 * @author Mihai Bratosin
 	 */
 	@Test
 	public final void testSetTempVelocity() {
@@ -47,7 +49,6 @@ public class ChangeVelocityModeTest {
 	 * Tests the method in the case where the button pressed
 	 * represents a value bigger than 128 (maximum velocity).
 	 * Temporary velocity should not be set.
-	 * @author Mihai Bratosin
 	 */
 	@Test
 	public final void testSetTempVelocityBiggerThanMax() {

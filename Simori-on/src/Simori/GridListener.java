@@ -3,7 +3,10 @@ package Simori;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JToggleButton;
-
+/**
+ * @author Airidas Juskaitis, Ollie McLean, Nicholas Higgins, Mihai Bratosin,
+ * Alonso-Lopez Mendoza
+ */
 public class GridListener implements ActionListener{
     
 	 private final int ONOFFMODE = 0;
@@ -25,7 +28,6 @@ public class GridListener implements ActionListener{
      * the method reacts appropriately (setting voice, velocity, loop speed
      * and so on).
      * @param e The Action Event fired
-     * @author Mihai Bratosin
      */
     public void actionPerformed(ActionEvent e) {
         // Gets the button that was pressed
@@ -44,10 +46,10 @@ public class GridListener implements ActionListener{
         		// if the button is selected changes it to true and if it is de-selected
         		// sets it to false
         		if(buttonPressed.isSelected()){
-        			ChangeLayer.getLayers(ChangeLayer.getCurrentLayer()).setContents(x,y,true);
+        			ChangeLayer.getLayer(ChangeLayer.getCurrentLayer()).setContents(x,y,true);
         		}
         		else
-        			ChangeLayer.getLayers(ChangeLayer.getCurrentLayer()).setContents(x,y,false);
+        			ChangeLayer.getLayer(ChangeLayer.getCurrentLayer()).setContents(x,y,false);
         		break;
         	case CHANGEVOICEMODE:
         		ChangeVoiceMode.setTempInstrument(x,y);

@@ -7,9 +7,11 @@ import org.junit.Before;
 import org.junit.Test;
 
 import Simori.ChangeLayer;
-import Simori.ChangeLoopPoint;
 import Simori.GUI;
-
+/**
+ * @author Airidas Juskaitis, Ollie McLean, Nicholas Higgins, Mihai Bratosin,
+ * Alonso-Lopez Mendoza
+ */
 public class ChangeLayerTest {
 	
 	private GUI a;

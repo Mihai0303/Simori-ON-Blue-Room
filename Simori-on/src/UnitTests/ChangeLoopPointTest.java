@@ -8,7 +8,10 @@ import org.junit.Test;
 
 import Simori.ChangeLoopPoint;
 import Simori.GUI;
-
+/**
+ * @author Airidas Juskaitis, Ollie McLean, Nicholas Higgins, Mihai Bratosin,
+ * Alonso-Lopez Mendoza
+ */
 public class ChangeLoopPointTest {
 	
 	private GUI a;
@@ -36,7 +39,6 @@ public class ChangeLoopPointTest {
 	 * Test for a regular use of the method. Sets 
 	 * the temporary loop point to a value in the allowed range
 	 * 0-15
-	 * @author Mihai Bratosin
 	 */
 	@Test
 	

@@ -3,7 +3,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JToggleButton;
-
+/**
+ * @author Airidas Juskaitis, Ollie McLean, Nicholas Higgins, Mihai Bratosin,
+ * Alonso-Lopez Mendoza
+ */
 public class ChangeModeListener implements ActionListener{
     
 	// integer representing the mode the board is in
@@ -23,7 +26,6 @@ public class ChangeModeListener implements ActionListener{
 	  * pressed. Changes the mode of the board depending on the
 	  * button. Disables every button other than the button
 	  * pressed and the ON button.
-	  * @author Alonso Lopez Mendoza,Mihai Bratosin , Nick Higgins
 	  */
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -42,7 +44,7 @@ public class ChangeModeListener implements ActionListener{
 	    			OnOff.enableGridButtons();
 	    			OnOff.enableMenuButtons();
 	    			ClockHand.startClockHand();
-	    			GUI.setClockHandVisible(true);
+	    			ClockHand.setClockHandVisible(true);
 	    			OnOff.startThreads();
 	    			GUI.currentMode = PERFORMANCEMODE;
 	    		}
@@ -53,7 +55,7 @@ public class ChangeModeListener implements ActionListener{
 	    			GUI.clearBoard();
 	    			GUI.clearLayers();
 	    			OnOff.stopThreads();
-	    			GUI.setClockHandVisible(false);
+	    			ClockHand.setClockHandVisible(false);
 	    			GUI.currentMode = ONOFFMODE;
 	    		}
 	    		break;

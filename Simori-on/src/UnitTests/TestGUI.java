@@ -1,19 +1,13 @@
 package UnitTests;
-import static org.junit.Assert.*;
-
-import java.awt.event.WindowEvent;
-
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-
-import Simori.ChangeVelocity;
 import Simori.GUI;
 
 
 /**
- * @author Mihai
- *
+ * @author Airidas Juskaitis, Ollie McLean, Nicholas Higgins, Mihai Bratosin,
+ * Alonso-Lopez Mendoza
  */
 public class TestGUI {
 	

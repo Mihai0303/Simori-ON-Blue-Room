@@ -1,14 +1,15 @@
 package Simori;
-
-import java.io.Serializable;
-
+/**
+ * @author Airidas Juskaitis, Ollie McLean, Nicholas Higgins, Mihai Bratosin,
+ * Alonso-Lopez Mendoza
+ */
 public class ChangeLayer{
 	
 	public static Layer[] Layers = new Layer[16];
 	
 	 // a variable for storing 
 	 private static int tempLayer;
-	 static int currentLayer;
+	 private static int currentLayer;
 
 	/**
 	 * Sets the temporary value of the current layer based on the
@@ -16,7 +17,6 @@ public class ChangeLayer{
 	 * on the grid.
 	 * @param x The x coordinate of the button pressed - the x-th column
 	 * @param y The y coordinate of the button pressed - the y-th column
-	 * @author Airidas Juskaitis
 	 */
 	public static void setTempLayer(int x,int y){
 		GUI.clearBoard();
@@ -30,7 +30,6 @@ public class ChangeLayer{
 	
 	/**
 	 * @return The temporary value of the layer
-	 * @author Airidas Juskaitis
 	 */
 	public static int getTempLayer(){
 		return tempLayer;
@@ -49,14 +48,13 @@ public class ChangeLayer{
 	 * @param l The layer to return
 	 * @return The layer for the position given
 	 */
-	public static Layer getLayers(int l){
+	public static Layer getLayer(int l){
 		return Layers[l];
 	}
 	
 	/**
 	 * Sets the value of the current layer
 	 * @param l The value of the layer
-	 * @author Airidas Juskaitis
 	 */
 	public static void setCurrentLayer(int l){
 		currentLayer = l;
@@ -65,7 +63,6 @@ public class ChangeLayer{
 	/**
 	 * Loads a layer on to the board
 	 * @param l The layer to be loaded
-	 * @author Mihai Bratosin
 	 */
 	public static void loadLayer(int l){
 		for(int i = 0; i < GUI.display.length; i++)

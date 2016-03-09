@@ -1,5 +1,8 @@
 package Simori;
-
+/**
+ * @author Airidas Juskaitis, Ollie McLean, Nicholas Higgins, Mihai Bratosin,
+ * Alonso-Lopez Mendoza
+ */
 public class ChangeLoopSpeed {
 
 	 // the temporary and permanent values of the loop speed
@@ -12,7 +15,6 @@ public class ChangeLoopSpeed {
 	 * on the grid. Value should be smaller than 160.
 	 * @param x The x coordinate of the button - the x-th column
 	 * @param y The y coordinate of the button - the y-th row
-	 * @author Ollie McLean
 	 */
 	public static void setTempLoopSpeed(int x, int y) {
 		GUI.clearBoard();
@@ -34,7 +36,6 @@ public class ChangeLoopSpeed {
 	
 	/**
 	 * @return The temporary value of the loop speed
-	 * @author Ollie McLean
 	 */
 	public static int getTempLoopSpeed() {
 		return tempLoopSpeed;
@@ -44,19 +45,17 @@ public class ChangeLoopSpeed {
 	/**
 	 * Sets the loop speed of the clock hand
 	 * @param ls The loop speed
-	 * @author Ollie McLean
 	 */
 	public static void setLoopSpeed(int ls) {
 		int nls = 159 - ls;
 		loopSpeed = nls*3;
-		GUI.timer.setDelay(loopSpeed);
+		GUI.getTimer().setDelay(loopSpeed);
 		
 	}
 	
 	/**
 	 * Gets the loop speed
 	 * @return Loop speed
-	 * @author Ollie McLean
 	 */
 	public static int getLoopSpeed(){
 		return loopSpeed;

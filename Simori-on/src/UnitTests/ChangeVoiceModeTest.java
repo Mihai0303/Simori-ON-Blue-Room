@@ -8,7 +8,10 @@ import org.junit.Test;
 
 import Simori.ChangeVoiceMode;
 import Simori.GUI;
-
+/**
+ * @author Airidas Juskaitis, Ollie McLean, Nicholas Higgins, Mihai Bratosin,
+ * Alonso-Lopez Mendoza
+ */
 public class ChangeVoiceModeTest {
 	
 	private GUI a;
@@ -34,7 +37,6 @@ public class ChangeVoiceModeTest {
 	/**
 	 * Test method for setTempInstrument(int, int)}.
 	 * Tests a regular use for the method.
-	 * @author Nicholas Higgins
 	 */
 	@Test
 	public final void testChangeVoiceMode() {
@@ -48,7 +50,6 @@ public class ChangeVoiceModeTest {
 	 * Tests the case when the argument value is bigger than
 	 * 128 (maximum number of instruments). Temporary instrument
 	 * should not be set.
-	 * @author Nicholas Higgins
 	 */
 	@Test
 	public final void testChangeVoiceModeExceedInstruments() {

@@ -1,5 +1,8 @@
 package Simori;
-
+/**
+ * @author Airidas Juskaitis, Ollie McLean, Nicholas Higgins, Mihai Bratosin,
+ * Alonso-Lopez Mendoza
+ */
 public class ChangeVelocity {
 	
 	 // the temporary and permanent values for the velocity
@@ -11,7 +14,6 @@ public class ChangeVelocity {
 	 * on the grid. Value should be smaller than 128.
 	 * @param x The x coordinate of the button pressed - the x-th column
 	 * @param y The y coordinate of the button pressed - the y-th row
-	 * @author Mihai Bratosin
 	 */
 	public static void setTempVelocity(int x, int y) {
 		GUI.clearBoard();          
@@ -37,7 +39,6 @@ public class ChangeVelocity {
 	
 	/**
 	 * @return The temporary value of the velocity
-	 * @author Mihai Bratosin
 	 */
 	public static int getTempVelocity() {
 		return tempVelocity;
@@ -47,7 +48,6 @@ public class ChangeVelocity {
 	/**
 	 * Sets the current velocity
 	 * @param vl The current velocity
-	 * @author Mihai Bratosin
 	 */
 	public static void setVelocity(int vl) {
 		ChangeLayer.Layers[ChangeLayer.getCurrentLayer()].setVelocity(vl);

@@ -1,5 +1,8 @@
 package Simori;
-
+/**
+ * @author Airidas Juskaitis, Ollie McLean, Nicholas Higgins, Mihai Bratosin,
+ * Alonso-Lopez Mendoza
+ */
 public class ChangeLoopPoint {
 	
 	 // the temporary and permanent value of the loop point
@@ -11,7 +14,6 @@ public class ChangeLoopPoint {
 	 * pressed 
 	 * @param x The x coordinate of the button pressed
 	 * @param y The y coordinate of the button pressed
-	 * @author Mihai Bratosin
 	 */
 	public static void setTempLoopPoint(int x, int y){
 		GUI.clearBoard();
@@ -32,12 +34,14 @@ public class ChangeLoopPoint {
 	
 	/**
 	 * @return the permanent value of the loop point
-	 * @author Alonso Lopez Mondoza
 	 */
 	public static int getLoopPoint(){
 		return loopPoint;
 	}
 	
+	/**
+	 * Sets the loop point to the value given
+	 */
 	public static void setLoopPoint(int p){
 		loopPoint = p;
 	}

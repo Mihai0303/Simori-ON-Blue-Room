@@ -1,18 +1,7 @@
 package Simori;
 import java.awt.Color;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.ObjectInputStream;
-import java.io.OutputStream;
-import java.net.ServerSocket;
-import java.net.Socket;
-import java.io.ObjectOutputStream;
-
 import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.WindowEvent;
-import java.util.ArrayList;
 
 import javax.sound.midi.Instrument;
 import javax.sound.midi.MidiSystem;
@@ -24,6 +13,10 @@ import javax.swing.JTextField;
 import javax.swing.JToggleButton;
 import javax.swing.Timer;
 
+/**
+ * @author Airidas Juskaitis, Ollie McLean, Nicholas Higgins, Mihai Bratosin,
+ * Alonso-Lopez Mendoza
+ */
 public class GUI extends JFrame{
 
 
@@ -31,24 +24,21 @@ public class GUI extends JFrame{
 	static JToggleButton[][] display = new JToggleButton[16][16];
 	
 	// the starting position for the clock hand
-	public static int clockHandPosition = 0;
+	private static int clockHandPosition = 0;
 	
 	//this ToggleButton array holds all the menu buttons (ON, L1-4, R1-4, OK)
-	static JToggleButton[] menuButtons = new JToggleButton[10];
+	private static JToggleButton[] menuButtons = new JToggleButton[10];
 	
 	//the text field to display information at the bottom of the board
 	static JTextField textField = new JTextField();
-	 
-	 static boolean clockHandVisible;
 	 	 
-	 final static Color SCANNED = new Color(255,245,105);
-	 final static Color DEFAULT = null;
+	private final static Color DEFAULT = null;
 	 
-	 private static Synthesizer synthesizer = getSynthesizer();
-	 private static Soundbank bank = synthesizer.getDefaultSoundbank();
-	 static Instrument[] instruments = bank.getInstruments();
+	private static Synthesizer synthesizer = getSynthesizer();
+	private static Soundbank bank = synthesizer.getDefaultSoundbank();
+	static Instrument[] instruments = bank.getInstruments();
 	 
-	 static Timer timer;
+	private static Timer timer;
 
 	 
 	 public static int currentMode = 0;
@@ -179,7 +169,6 @@ public class GUI extends JFrame{
 	/**
 	 * Returns the synthesizer of the MidiSystem.
 	 * @return The Synthesizer of the MidiSystem
-	 * @author Mihai Bratosin
 	 */
 	private static Synthesizer getSynthesizer(){
 		try{
@@ -188,12 +177,9 @@ public class GUI extends JFrame{
 		return null;
 	}
 	
-
-	
 	/**
 	 * Sets the current mode of the board
 	 * @param mode The mode of the board
-	 * @author Mihai Bratosin
 	 */
 	public static void setCurrentMode(int mode){
 		currentMode = mode;
@@ -201,7 +187,6 @@ public class GUI extends JFrame{
 	
 	/**
 	 * Clears the entire 16x16 grid of the board
-	 * @author Mihai Bratosin 
 	 */
 	public static void clearBoard() {
 		for(int i = 0; i < display.length; i++){
@@ -217,27 +202,15 @@ public class GUI extends JFrame{
 	 * Sets all the menu buttons to unselected other than 
 	 * the button passed as an argument
 	 * @param button The menu button that will not be de-selected
-	 * @author Alonso Lopez Mendoza
 	 */
 	public static void clearMenuButtons(JToggleButton button) {		
 		for(JToggleButton menuButton : menuButtons)
 			if(!menuButton.equals(button) && !menuButton.getText().equals("ON"))
-				menuButton.setSelected(false);
-		
-	}
-
-	/**
-	 * Sets the visiblity of the clock hand
-	 * @param a True for visible
-	 * @author Mihai Bratosin
-	 */
-	public static void setClockHandVisible(boolean a){
-		clockHandVisible = a;
+				menuButton.setSelected(false);		
 	}
 	
 	/**
 	 * Clears the contents of all the layers
-	 * @author Mihai Bratosin
 	 */
 	public static void clearLayers(){
 		for(int i=0;i<ChangeLayer.Layers.length;i++){
@@ -245,6 +218,39 @@ public class GUI extends JFrame{
 			}
 	}
 	
+	/**
+	 * @return The position of the clock hand
+	 */
+	public static int getClockHandPosition(){
+		return clockHandPosition;
+	}
 	
+	/**
+	 * Sets the position of the clock hand
+	 * @param chp
+	 */
+	public static void setClockHandPosition(int chp){
+		clockHandPosition = chp;
+	}
 	
+	/**
+	 * @return The array of menu buttons
+	 */
+	public static JToggleButton[] getMenuButtons(){
+		return menuButtons;
+	}
+	
+	/**
+	 * @return The timer of the board
+	 */
+	public static Timer getTimer(){
+		return timer;
+	}
+	
+	/**
+	 * @param t The new timer
+	 */
+	public static void setTimer(Timer t){
+		timer = t;
+	}
 }

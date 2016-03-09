@@ -1,12 +1,13 @@
 package Simori;
-
-import javax.sound.midi.Instrument;
-
+/**
+ * @author Airidas Juskaitis, Ollie McLean, Nicholas Higgins, Mihai Bratosin,
+ * Alonso-Lopez Mendoza
+ */
 public class ChangeVoiceMode {
 
 	
 	// the temporary and permanent values for the instrument playing
-	 private static int instrument, tempInstrument;
+	 private static int tempInstrument;
 	
 	/**
 	 * Sets the temporary value for the current instrument playing
@@ -14,7 +15,6 @@ public class ChangeVoiceMode {
 	 * on the grid. Value should be smaller than 128
 	 * @param x The x coordinate of the button pressed - the x-th column
 	 * @param y The y coordinate of the button pressed - the y-th row
-	 * @author Nicholas Higgins
 	 */
 	public static void setTempInstrument(int x, int y) {
 		GUI.clearBoard();
@@ -38,7 +38,6 @@ public class ChangeVoiceMode {
 	
 	/**
 	 * @return The temporary value of the instrument
-	 * @author Nicholas Higgins
 	 */
 	public static int getTempInstrument() {
 		return tempInstrument;
@@ -47,7 +46,6 @@ public class ChangeVoiceMode {
 	/**
 	 * Sets the current instrument playing
 	 * @param ch The instrument playing - integer is a midi encoding
-	 * @author Nicholas Higgins
 	 */
 	public static void setInstrument(int ch) {
 		ChangeLayer.Layers[ChangeLayer.getCurrentLayer()].setInstrument(ch);
