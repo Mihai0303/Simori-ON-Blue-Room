@@ -56,9 +56,7 @@ public class SaveLoad {
 	 */
 	public static void setFileName(int x, int y){
 		GUI.clearBoard();
-		GUI.textField.setText(addCharToTempFileName(x, y));
-		System.out.println("x: " + x + " y: " + y);
-		
+		GUI.textField.setText(addCharToTempFileName(x, y));		
 		for(int i = 0; i < 16; i++){
 			for(int j = 0; j < 16; j++){
 				if(j==x && i == y){

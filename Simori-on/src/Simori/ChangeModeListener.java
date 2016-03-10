@@ -112,6 +112,7 @@ public class ChangeModeListener implements ActionListener{
 	    	case R2:
 	    		if(button.isSelected()){
 	    			GUI.currentMode = SAVECONFIGURATIONMODE;
+	    			GUI.textField.setText(null);
 	    			GUI.displayKeyboard();
 	    			GUI.clearBoard();
 	    		}
@@ -124,6 +125,7 @@ public class ChangeModeListener implements ActionListener{
 	    	case R3:
 	    		if(button.isSelected()){
 	    			GUI.currentMode = LOADCONFIGURATIONMODE;
+	    			GUI.textField.setText(null);
 	    			GUI.displayKeyboard();
 	    			GUI.clearBoard();
 	    		}
