@@ -210,6 +210,34 @@ public class GUI extends JFrame{
 	}
 	
 	/**
+	 * Displays alphanumeric characters over the first 36 buttons of the
+	 * board
+	 */
+	public static void displayKeyboard(){
+		String[] keyboardArray = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "0",
+		       "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m",
+		       "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"};
+		for(int i=0;i<16;i++)
+			for(int j=0;j<16;j++)
+				if(i*16+j<36)
+					display[i][j].setText(keyboardArray[i*16+j]);
+	}
+	
+	/**
+	 * Erases the text displayed over the first 36 buttons of the
+	 * board
+	 */
+	public static void eraseKeyboard(){
+		for(int i=0;i<16;i++){
+			for(int j=0;j<16;j++){
+				if(i*16+j<36){
+					display[i][j].setText(null);
+				}
+			}
+		}
+	}
+	
+	/**
 	 * Clears the contents of all the layers
 	 */
 	public static void clearLayers(){

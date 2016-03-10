@@ -1,7 +1,6 @@
 package Simori;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.JToggleButton;
 /**
  * @author Airidas Juskaitis, Ollie McLean, Nicholas Higgins, Mihai Bratosin,
@@ -52,6 +51,7 @@ public class ChangeModeListener implements ActionListener{
 	    			OnOff.disableGridButtons();
 	    			OnOff.disableMenuButtons();
 	    			GUI.clearMenuButtons(null);
+	    			GUI.eraseKeyboard();
 	    			GUI.clearBoard();
 	    			GUI.clearLayers();
 	    			OnOff.stopThreads();
@@ -63,7 +63,6 @@ public class ChangeModeListener implements ActionListener{
 	    		if(button.isSelected()){
 	    			GUI.currentMode = CHANGEVOICEMODE;
 	    			GUI.clearBoard();
-	    			//insert code for Change Voice Mode
 	    		}
 	    		else{
 	    			GUI.currentMode = PERFORMANCEMODE;
@@ -113,20 +112,24 @@ public class ChangeModeListener implements ActionListener{
 	    	case R2:
 	    		if(button.isSelected()){
 	    			GUI.currentMode = SAVECONFIGURATIONMODE;
+	    			GUI.displayKeyboard();
 	    			GUI.clearBoard();
 	    		}
 	    		else{
 	    			GUI.currentMode = PERFORMANCEMODE;
+	    			GUI.eraseKeyboard();
 	    			ChangeLayer.loadLayer(ChangeLayer.getCurrentLayer());
 	    		}
 	    		break;
 	    	case R3:
 	    		if(button.isSelected()){
 	    			GUI.currentMode = LOADCONFIGURATIONMODE;
+	    			GUI.displayKeyboard();
 	    			GUI.clearBoard();
 	    		}
 	    		else{
 	    			GUI.currentMode = PERFORMANCEMODE;
+	    			GUI.eraseKeyboard();
 	    			ChangeLayer.loadLayer(ChangeLayer.getCurrentLayer());
 	    		}
 	    		break;
@@ -162,9 +165,11 @@ public class ChangeModeListener implements ActionListener{
                 }
                 if(GUI.currentMode == SAVECONFIGURATIONMODE){
                 	SaveLoad.save();
+                	GUI.eraseKeyboard();
                 }
                 if(GUI.currentMode == LOADCONFIGURATIONMODE){
                 	SaveLoad.load();
+                	GUI.eraseKeyboard();
                 	ChangeLayer.loadLayer(ChangeLayer.getCurrentLayer());
                 }
                 GUI.currentMode = PERFORMANCEMODE;
