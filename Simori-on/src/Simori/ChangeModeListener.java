@@ -30,14 +30,20 @@ public class ChangeModeListener implements ActionListener{
     public void actionPerformed(ActionEvent e) {
         JToggleButton button = (JToggleButton) e.getSource();
         if(GUI.currentMode != PERFORMANCEMODE) GUI.clearBoard();
-        if(button.isSelected())
+        	
+        
+        if(button.isSelected()){
         	OnOff.disableMenuButtons(button);
-        else
+        	ClockHand.setClockHandVisible(false);
+        }
+        else{
         	OnOff.enableMenuButtons();
+        	ClockHand.setClockHandVisible(true);
+        }
     
         
         
-        switch(ButtonText.valueOf(button.getText())){
+        switch(ButtonText.valueOf(button.getToolTipText())){
 	    	case ON:
 	    		if(button.isSelected()){
 	    			OnOff.enableGridButtons();
@@ -113,8 +119,8 @@ public class ChangeModeListener implements ActionListener{
 	    		if(button.isSelected()){
 	    			GUI.currentMode = SAVECONFIGURATIONMODE;
 	    			GUI.textField.setText(null);
-	    			GUI.displayKeyboard();
 	    			GUI.clearBoard();
+	    			GUI.displayKeyboard();
 	    		}
 	    		else{
 	    			GUI.currentMode = PERFORMANCEMODE;
@@ -126,8 +132,8 @@ public class ChangeModeListener implements ActionListener{
 	    		if(button.isSelected()){
 	    			GUI.currentMode = LOADCONFIGURATIONMODE;
 	    			GUI.textField.setText(null);
-	    			GUI.displayKeyboard();
 	    			GUI.clearBoard();
+	    			GUI.displayKeyboard();	    			
 	    		}
 	    		else{
 	    			GUI.currentMode = PERFORMANCEMODE;
@@ -147,8 +153,6 @@ public class ChangeModeListener implements ActionListener{
 	    		break;
 	    	case OK:
 
-	    		
-	    		
 	    		if(GUI.currentMode == CHANGEVOICEMODE){
                     ChangeVoiceMode.setInstrument(ChangeVoiceMode.getTempInstrument());
                 }
@@ -174,9 +178,12 @@ public class ChangeModeListener implements ActionListener{
                 	GUI.eraseKeyboard();
                 	ChangeLayer.loadLayer(ChangeLayer.getCurrentLayer());
                 }
-                GUI.currentMode = PERFORMANCEMODE;
-                OnOff.enableMenuButtons();
+                if(GUI.currentMode!=ONOFFMODE){
+                	OnOff.enableMenuButtons();
+                	GUI.currentMode = PERFORMANCEMODE;
+                }
                 GUI.clearMenuButtons(null);
+                ClockHand.setClockHandVisible(true);
                 ChangeLayer.loadLayer(ChangeLayer.getCurrentLayer());
 	    		break;
 	    		

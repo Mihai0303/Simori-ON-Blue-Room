@@ -34,8 +34,8 @@ public class GridListener implements ActionListener{
         JToggleButton buttonPressed = (JToggleButton) e.getSource();
         
         // Get the column and row of the pressed button
-        int x = (buttonPressed.getX()-1)/28;
-        int y = (buttonPressed.getY()-1)/28;
+        int x = (buttonPressed.getX()-1)/43;
+        int y = (buttonPressed.getY()-1)/43;
         
         
         switch(GUI.currentMode){
@@ -65,7 +65,6 @@ public class GridListener implements ActionListener{
         		break;
         	case CHANGELAYERMODE:
         		ChangeLayer.setTempLayer(x,y);
-        		System.out.println(ChangeLayer.getCurrentLayer());
         		break;
         	case SAVECONFIGURATIONMODE:
         		SaveLoad.setFileName(x,y);
