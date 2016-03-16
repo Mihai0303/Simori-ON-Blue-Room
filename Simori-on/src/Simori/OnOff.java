@@ -36,7 +36,7 @@ public class OnOff {
 	 */
 	protected static void disableMenuButtons(){
 		// Does not disable the OK button - the last button in the array
-		for(int i=1;i<GUI.getMenuButtons().length-1;i++){
+		for(int i=1;i<GUI.getMenuButtons().length;i++){
 			GUI.getMenuButtons()[i].setEnabled(false);
 		}
 	

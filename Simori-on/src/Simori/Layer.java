@@ -15,7 +15,7 @@ import javax.sound.midi.Synthesizer;
 public class Layer implements Runnable {
 	
 	Boolean[][] contents;
-	private int instrument = 111;
+	private int instrument = 22;
 	private int velocity = 40;
 	// determines when the thread stops
 	private volatile boolean done = false;

@@ -8,6 +8,7 @@ import org.junit.Test;
 
 import Simori.ChangeVelocity;
 import Simori.GUI;
+import Simori.Modes;
 /**
  * @author Airidas Juskaitis, Ollie McLean, Nicholas Higgins, Mihai Bratosin,
  * Alonso-Lopez Mendoza
@@ -40,7 +41,7 @@ public class ChangeVelocityModeTest {
 	 */
 	@Test
 	public final void testSetTempVelocity() {
-		GUI.setCurrentMode(CHANGEVELOCITYMODE);
+		GUI.setCurrentMode(Modes.CHANGEVELOCITYMODE);
 		ChangeVelocity.setTempVelocity(1, 1);
 		assertEquals(ChangeVelocity.getTempVelocity(),17);
 	}
@@ -52,7 +53,7 @@ public class ChangeVelocityModeTest {
 	 */
 	@Test
 	public final void testSetTempVelocityBiggerThanMax() {
-		GUI.setCurrentMode(CHANGEVELOCITYMODE);
+		GUI.setCurrentMode(Modes.CHANGEVELOCITYMODE);
 		ChangeVelocity.setTempVelocity(14, 15);
 		assertEquals(ChangeVelocity.getTempVelocity(),0);
 	}

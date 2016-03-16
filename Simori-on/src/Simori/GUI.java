@@ -3,9 +3,7 @@ import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.event.ActionListener;
 import javax.sound.midi.Instrument;
-import javax.sound.midi.MidiChannel;
 import javax.sound.midi.MidiSystem;
-import javax.sound.midi.MidiUnavailableException;
 import javax.sound.midi.Soundbank;
 import javax.sound.midi.Synthesizer;
 import javax.swing.ImageIcon;
@@ -50,7 +48,7 @@ public class GUI extends JFrame{
 	private static Timer timer;
 
 	 
-	 public static int currentMode = 0;
+	 public static Modes currentMode = Modes.ONOFFMODE;
 	 
 	 /**
 	  * Sets up the GUI for the board. Creates the 16x16 grid of buttons,
@@ -232,7 +230,7 @@ public class GUI extends JFrame{
 	 * Sets the current mode of the board
 	 * @param mode The mode of the board
 	 */
-	public static void setCurrentMode(int mode){
+	public static void setCurrentMode(Modes mode){
 		currentMode = mode;
 	}
 	
@@ -279,18 +277,16 @@ public class GUI extends JFrame{
 	 */
 	public static void eraseKeyboard(){
 		for(int i=0;i<16;i++)
-			for(int j=0;j<16;j++)
-				if(i*16+j<36){
-					display[i][j].setIcon(DEFAULT);
-					display[i][j].setSelectedIcon(SCANNED);
-				}
+			for(int j=0;j<16;j++){
+				display[i][j].setIcon(DEFAULT);
+				display[i][j].setSelectedIcon(SCANNED);
+			}
 	}
 	
 	public static void deselectKeyboard(){
 		for(int i=0;i<16;i++)
 			for(int j=0;j<16;j++)
-				if(i*16+j<36)
-					display[i][j].setSelected(false);
+				display[i][j].setSelected(false);
 	}
 	
 	/**

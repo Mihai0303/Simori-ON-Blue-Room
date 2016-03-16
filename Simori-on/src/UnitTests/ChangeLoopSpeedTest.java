@@ -8,6 +8,7 @@ import org.junit.Test;
 
 import Simori.ChangeLoopSpeed;
 import Simori.GUI;
+import Simori.Modes;
 /**
  * @author Airidas Juskaitis, Ollie McLean, Nicholas Higgins, Mihai Bratosin,
  * Alonso-Lopez Mendoza
@@ -40,7 +41,7 @@ public class ChangeLoopSpeedTest {
 	 */
 	@Test
 	public final void testSetTempLoopSpeed() {
-		GUI.setCurrentMode(CHANGELOOPSPEEDMODE);
+		GUI.setCurrentMode(Modes.CHANGELOOPSPEEDMODE);
 		ChangeLoopSpeed.setTempLoopSpeed(1, 1);
 		assertEquals(ChangeLoopSpeed.getTempLoopSpeed(),17);
 	}
@@ -53,7 +54,7 @@ public class ChangeLoopSpeedTest {
 	 */
 	@Test
 	public final void testSetTempLoopSpeedExceedMax() {
-		GUI.setCurrentMode(CHANGELOOPSPEEDMODE);
+		GUI.setCurrentMode(Modes.CHANGELOOPSPEEDMODE);
 		ChangeLoopSpeed.setTempLoopSpeed(14, 14);
 		assertEquals(ChangeLoopSpeed.getTempLoopSpeed(),0);
 	}

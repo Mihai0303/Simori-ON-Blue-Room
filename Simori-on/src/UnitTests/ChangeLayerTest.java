@@ -8,6 +8,7 @@ import org.junit.Test;
 
 import Simori.ChangeLayer;
 import Simori.GUI;
+import Simori.Modes;
 /**
  * @author Airidas Juskaitis, Ollie McLean, Nicholas Higgins, Mihai Bratosin,
  * Alonso-Lopez Mendoza
@@ -42,7 +43,7 @@ public class ChangeLayerTest {
 	 */
 	@Test
 	public final void testSetTempLayer() {
-		GUI.setCurrentMode(CHANGELAYERMODE);
+		GUI.setCurrentMode(Modes.CHANGELAYERMODE);
 		ChangeLayer.setTempLayer(1, 1);
 		assertEquals(ChangeLayer.getTempLayer(),1);
 	}

@@ -8,6 +8,7 @@ import org.junit.Test;
 
 import Simori.ChangeLoopPoint;
 import Simori.GUI;
+import Simori.Modes;
 /**
  * @author Airidas Juskaitis, Ollie McLean, Nicholas Higgins, Mihai Bratosin,
  * Alonso-Lopez Mendoza
@@ -43,7 +44,7 @@ public class ChangeLoopPointTest {
 	@Test
 	
 	public final void testSetTempLoopPoint() {
-		GUI.setCurrentMode(CHANGELOOPPOINTMODE);
+		GUI.setCurrentMode(Modes.CHANGELOOPPOINTMODE);
 		ChangeLoopPoint.setTempLoopPoint(1, 1);
 		assertEquals(ChangeLoopPoint.getTempLoopPoint(),1);
 	}

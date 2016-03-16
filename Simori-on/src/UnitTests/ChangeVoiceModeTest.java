@@ -8,6 +8,7 @@ import org.junit.Test;
 
 import Simori.ChangeVoiceMode;
 import Simori.GUI;
+import Simori.Modes;
 /**
  * @author Airidas Juskaitis, Ollie McLean, Nicholas Higgins, Mihai Bratosin,
  * Alonso-Lopez Mendoza
@@ -40,7 +41,7 @@ public class ChangeVoiceModeTest {
 	 */
 	@Test
 	public final void testChangeVoiceMode() {
-		GUI.setCurrentMode(CHANGEVOICEMODE);
+		GUI.setCurrentMode(Modes.CHANGEVOICEMODE);
 		ChangeVoiceMode.setTempInstrument(1, 1);
 		assertEquals(ChangeVoiceMode.getTempInstrument(),17);		
 	}
@@ -53,7 +54,7 @@ public class ChangeVoiceModeTest {
 	 */
 	@Test
 	public final void testChangeVoiceModeExceedInstruments() {
-		GUI.setCurrentMode(CHANGEVOICEMODE);
+		GUI.setCurrentMode(Modes.CHANGEVOICEMODE);
 		ChangeVoiceMode.setTempInstrument(14,15);
 		assertEquals(ChangeVoiceMode.getTempInstrument(),0);		
 	}

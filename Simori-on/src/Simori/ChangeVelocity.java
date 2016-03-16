@@ -50,7 +50,7 @@ public class ChangeVelocity {
 	 * @param vl The current velocity
 	 */
 	public static void setVelocity(int vl) {
-		ChangeLayer.Layers[ChangeLayer.getCurrentLayer()].setVelocity(vl);
+		ChangeLayer.getLayer(ChangeLayer.getCurrentLayer()).setVelocity(vl);
 	}
 	
 }
