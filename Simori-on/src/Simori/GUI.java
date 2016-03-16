@@ -1,18 +1,13 @@
 package Simori;
 import java.awt.Color;
-import java.awt.Component;
-import java.awt.Graphics;
 import java.awt.GridLayout;
-import java.awt.Image;
 import java.awt.event.ActionListener;
-import java.io.IOException;
-
-import javax.imageio.ImageIO;
 import javax.sound.midi.Instrument;
+import javax.sound.midi.MidiChannel;
 import javax.sound.midi.MidiSystem;
+import javax.sound.midi.MidiUnavailableException;
 import javax.sound.midi.Soundbank;
 import javax.sound.midi.Synthesizer;
-import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -35,6 +30,7 @@ public class GUI extends JFrame{
 	
 	//this ToggleButton array holds all the menu buttons (ON, L1-4, R1-4, OK)
 	private static JToggleButton[] menuButtons = new JToggleButton[10];
+	
 	
 	//the text field to display information at the bottom of the board
 	static JTextField textField = new JTextField();
@@ -66,6 +62,7 @@ public class GUI extends JFrame{
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.getContentPane().setBackground(new Color(215,215,215));
 		this.setLayout(null);
+		
 		
 		JPanel central = new JPanel();
 		central.setSize(690,690);

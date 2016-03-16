@@ -92,9 +92,7 @@ public class Layer implements Runnable {
 	 */
 	@Override
 	public void run() {
-		while(!done){
-		//System.out.println(GUI.clockHandPosition);
-		
+		while(!done){		
 		for(int i = 0; i < contents.length; i++){
 			
 			for(int j = 0; j < contents[i].length; j++){

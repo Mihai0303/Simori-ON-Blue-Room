@@ -1,6 +1,11 @@
 package Simori;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
+import javax.sound.midi.MidiChannel;
+import javax.sound.midi.MidiSystem;
+import javax.sound.midi.MidiUnavailableException;
+import javax.sound.midi.Synthesizer;
 import javax.swing.JToggleButton;
 /**
  * @author Airidas Juskaitis, Ollie McLean, Nicholas Higgins, Mihai Bratosin,
@@ -8,6 +13,7 @@ import javax.swing.JToggleButton;
  */
 public class ChangeModeListener implements ActionListener{
     
+	
 	// integer representing the mode the board is in
 	 private final int ONOFFMODE = 0;
 	 private final int PERFORMANCEMODE = 1;
@@ -20,6 +26,9 @@ public class ChangeModeListener implements ActionListener{
 	 private final int LOADCONFIGURATIONMODE = 8;
 	 private final int SLAVEMASTERMODE = 9;
 	
+	 
+
+	 
 	 /**
 	  * Action performed when one of the menu buttons is
 	  * pressed. Changes the mode of the board depending on the
@@ -52,6 +61,7 @@ public class ChangeModeListener implements ActionListener{
 	    			ClockHand.setClockHandVisible(true);
 	    			OnOff.startThreads();
 	    			GUI.currentMode = PERFORMANCEMODE;
+	    			SaveLoad.load("on");
 	    		}
 	    		else{
 	    			OnOff.disableGridButtons();
@@ -62,6 +72,7 @@ public class ChangeModeListener implements ActionListener{
 	    			GUI.clearLayers();
 	    			OnOff.stopThreads();
 	    			ClockHand.setClockHandVisible(false);
+	    			ChangeLayer.setCurrentLayer(0);
 	    			GUI.currentMode = ONOFFMODE;
 	    		}
 	    		break;

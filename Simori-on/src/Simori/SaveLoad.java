@@ -18,10 +18,19 @@ public class SaveLoad {
 			FileOutputStream fos = new FileOutputStream(GUI.textField.getText() + ".song");
 			ObjectOutputStream oos = new ObjectOutputStream(fos);
 			Boolean[][][] newArray = new Boolean[16][16][16];
+			int[] instruments = new int[17];
 			for(int i=0;i<16;i++){
 						newArray[i] = ChangeLayer.getLayer(i).contents;
 			}
 			oos.writeObject(newArray);
+			for(int j=0;j<17;j++){
+				if(j==16){
+					instruments[j] = ChangeLoopSpeed.getLoopSpeed();
+				}else{
+					instruments[j] = ChangeLayer.getLayer(j).getInstrument();
+				}
+			}
+			oos.writeObject(instruments);
 		}
 		catch(Exception e){
 			e.printStackTrace();
@@ -34,7 +43,7 @@ public class SaveLoad {
 	 */
 	public static void load() {
 		Boolean[][][] newArray = new Boolean[16][16][16];
-		
+		int[] instruments = new int[17];
 		try{
 			FileInputStream fis = new FileInputStream(GUI.textField.getText() + ".song");
 			ObjectInputStream iis = new ObjectInputStream(fis);
@@ -42,12 +51,43 @@ public class SaveLoad {
 			for(int i=0;i<16;i++){
 				ChangeLayer.Layers[i].contents = newArray[i];
 			}
+			instruments = (int[]) iis.readObject();
+			for(int j=0;j<17;j++){
+				if(j==16){
+					ChangeLoopSpeed.setLoopSpeed(instruments[j]);
+				}else{
+					ChangeLayer.getLayer(j).setInstrument(instruments[j]);
+				}
+			}
 			ChangeLayer.loadLayer(ChangeLayer.getCurrentLayer());
 		} catch (Exception e){
 			e.printStackTrace();
 		}		
 	}
 	
+	public static void load(String s) {
+		Boolean[][][] newArray = new Boolean[16][16][16];
+		int[] instruments = new int[17];
+		try{
+			FileInputStream fis = new FileInputStream(s + ".song");
+			ObjectInputStream iis = new ObjectInputStream(fis);
+			newArray = (Boolean[][][]) iis.readObject();
+			for(int i=0;i<16;i++){
+				ChangeLayer.Layers[i].contents = newArray[i];
+			}
+			instruments = (int[]) iis.readObject();
+			for(int j=0;j<17;j++){
+				if(j==16){
+					ChangeLoopSpeed.setLoopSpeed(instruments[j]);
+				}else{
+					ChangeLayer.getLayer(j).setInstrument(instruments[j]);
+				}
+			}
+			ChangeLayer.loadLayer(ChangeLayer.getCurrentLayer());
+		} catch (Exception e){
+			e.printStackTrace();
+		}		
+	}
 	
 	/**
 	 * Sets the display based on the button pressed

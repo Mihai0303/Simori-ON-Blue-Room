@@ -42,11 +42,24 @@ public class SlaveMaster extends JFrame implements ActionListener {
 				OutputStream out = s.getOutputStream();
 				ObjectOutputStream writer = new ObjectOutputStream(out);
 				writer.writeObject(newArray);
+				
+				int[] instruments = new int[17];
+				for(int j=0;j<17;j++){
+					if(j==16){
+						instruments[j] = ChangeLoopSpeed.getLoopSpeed();
+					}else{
+						instruments[j] = ChangeLayer.getLayer(j).getInstrument();
+					}
+				}
+				writer.writeObject(instruments);
 				break;
-			}}
+			}
+			ss.close();	
+		}
 		catch(IOException e){
 			e.printStackTrace();
 		}
+		
 	}
 	
 	/**
@@ -60,10 +73,23 @@ public class SlaveMaster extends JFrame implements ActionListener {
 			InputStream in = s.getInputStream();
 			OutputStream out = s.getOutputStream();
 			ObjectInputStream reader = new ObjectInputStream(in);
+			
+			//Read the layers
 			Boolean[][][] newArray = (Boolean[][][]) reader.readObject();
 			for(int i=0;i<16;i++){
 				ChangeLayer.Layers[i].contents = newArray[i];
 			}
+			
+			//Read the instruments and the loop speed
+			int[] instruments = (int[]) reader.readObject();
+			for(int j=0;j<17;j++){
+				if(j==16){
+					ChangeLoopSpeed.setLoopSpeed(instruments[j]);
+				}else{
+					ChangeLayer.getLayer(j).setInstrument(instruments[j]);
+				}
+			}
+			
 			ChangeLayer.loadLayer(ChangeLayer.getCurrentLayer());
 			s.close();
 		}catch(Exception e){
