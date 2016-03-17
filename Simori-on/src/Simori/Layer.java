@@ -19,7 +19,7 @@ public class Layer implements Runnable {
 	private int velocity = 40;
 	// determines when the thread stops
 	private volatile boolean done = false;
-	
+	private int layerNo;
 	Synthesizer synth;
 	MidiChannel[] channels;
 	
@@ -32,8 +32,7 @@ public class Layer implements Runnable {
 	 * channels for the board.
 	 */
 	public Layer(){
-		contents = new Boolean[16][16];
-				
+		contents = new Boolean[16][16];		
 		for(int i = 0; i < 16; i++){
 			for(int j = 0; j < 16; j++){
 				contents[i][j] = false;
@@ -92,6 +91,7 @@ public class Layer implements Runnable {
 	 */
 	@Override
 	public void run() {
+		playStart();
 		while(!done){		
 		for(int i = 0; i < contents.length; i++){
 			
@@ -101,16 +101,18 @@ public class Layer implements Runnable {
 				if(realCHP == 16) realCHP = 15;
 
 				if(contents[realCHP][j]){
-					channels[1].programChange(instrument);
-					channels[1].noteOn( 60-j, velocity ); 
+					channels[layerNo].programChange(instrument);
+					channels[layerNo].noteOn( 60-j, velocity ); 
 				}		
 				
 			}
 		}
 		
 		if(GUI.getClockHandPosition() == ChangeLoopPoint.getLoopPoint()) 
-			channels[1].allNotesOff();
+			channels[layerNo].allNotesOff();
 		}
+		
+		playStop();
 		return;
 	}
 	
@@ -150,6 +152,49 @@ public class Layer implements Runnable {
 	public Boolean[][] getContentArray(){
 		return this.contents;
 	}
-
+	
+	public void setLayerNumber(int n){
+		layerNo = n;
+	}
+	
+	/**
+	 * Plays a sound when the board is started
+	 */
+	private void playStart(){	
+		channels[1].programChange(52);
+		channels[1].noteOn(45, velocity);
+		try {Thread.sleep(200);}
+		catch (InterruptedException e) {e.printStackTrace();}
+		channels[1].noteOn(50, velocity);
+		try {Thread.sleep(200);}
+		catch (InterruptedException e) {e.printStackTrace();}
+		channels[1].noteOn(53, velocity);
+		channels[1].allNotesOff();	
+	}
+	
+	/**
+	 * Plays a sound when the board is turned off
+	 */
+	private void playStop(){
+		try {Thread.sleep(200);}
+		catch (InterruptedException e) {e.printStackTrace();}
+		channels[1].programChange(52);
+		channels[1].noteOn(45, velocity);
+		try {Thread.sleep(200);}
+		catch (InterruptedException e) {e.printStackTrace();}
+		channels[1].noteOn(50, velocity);
+		try {Thread.sleep(200);}
+		catch (InterruptedException e) {e.printStackTrace();}
+		channels[1].noteOn(55, velocity);
+		channels[1].allNotesOff();
+	}
+	
+	/**
+	 * Plays a sound when the user is denied a value in one of the modes
+	 */
+	public void playDenied(){
+		channels[1].programChange(111);
+		channels[1].noteOn(10, velocity);
+	}
 }
 

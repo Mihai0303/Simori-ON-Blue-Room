@@ -55,7 +55,6 @@ public class GUI extends JFrame{
 	  * the menu buttons and adds them to the board.
 	  */
 	public GUI(){
-		
 		super("Simori");
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.getContentPane().setBackground(new Color(215,215,215));

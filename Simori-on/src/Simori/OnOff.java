@@ -71,6 +71,7 @@ public class OnOff {
 	public static void startThreads(){
 		for(int i = 0; i < ChangeLayer.Layers.length; i++){
 			ChangeLayer.Layers[i] = new Layer();
+			ChangeLayer.Layers[i].setLayerNumber(i);
 		}
 		for(int i = 0; i < ChangeLayer.Layers.length; i++){
 			new Thread(ChangeLayer.Layers[i]).start();
