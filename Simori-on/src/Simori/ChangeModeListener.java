@@ -145,11 +145,23 @@ public class ChangeModeListener implements ActionListener{
 	    		break;
 	    	case OK:
 	    		
-	    		if(GUI.currentMode==Modes.PERFORMANCEMODE){
+	    		if(GUI.currentMode==Modes.SHOPBOYMODE){
+                	GUI.currentMode = Modes.PERFORMANCEMODE;
+                	GUI.clearBoard();
+                	SaveLoad.load("empty");
+                	OnOff.enableMenuButtons();
+                	ShopBoy.stop();
+                }
+	    		
+	    		else if(GUI.currentMode==Modes.PERFORMANCEMODE){
+	    			GUI.currentMode = Modes.SHOPBOYMODE;
 	    			ShopBoy.playShopBoy();
+	    			ClockHand.setClockHandVisible(true);
+	    			OnOff.disableMenuButtons();
+	    			OnOff.enableMenuButton("OK");
 	    		}
 	    		
-	    		if(GUI.currentMode == Modes.CHANGEVOICEMODE){
+	    		else if(GUI.currentMode == Modes.CHANGEVOICEMODE){
                     if(ChangeVoiceMode.getTempInstrument()<128){
 	    				ChangeVoiceMode.setInstrument(ChangeVoiceMode.getTempInstrument());
 	    				OnOff.enableMenuButtons();
@@ -161,7 +173,7 @@ public class ChangeModeListener implements ActionListener{
         				OnOff.deselectOk();
         			}
                 }
-                if(GUI.currentMode == Modes.CHANGEVELOCITYMODE){
+	    		else if(GUI.currentMode == Modes.CHANGEVELOCITYMODE){
                 	if(ChangeVelocity.getTempVelocity()<128){
                 		ChangeVelocity.setVelocity(ChangeVelocity.getTempVelocity());
                 		OnOff.enableMenuButtons();
@@ -173,7 +185,7 @@ public class ChangeModeListener implements ActionListener{
                 		OnOff.deselectOk();
                 	}
                 }
-                if(GUI.currentMode == Modes.CHANGELOOPSPEEDMODE){
+	    		else if(GUI.currentMode == Modes.CHANGELOOPSPEEDMODE){
                     if(ChangeLoopSpeed.getTempLoopSpeed()<160){
                     	ChangeLoopSpeed.setLoopSpeed(ChangeLoopSpeed.getTempLoopSpeed());
                     	OnOff.enableMenuButtons();
@@ -185,24 +197,24 @@ public class ChangeModeListener implements ActionListener{
                 		OnOff.deselectOk();
                     }
                 }
-                if(GUI.currentMode == Modes.CHANGELOOPPOINTMODE){
+	    		else if(GUI.currentMode == Modes.CHANGELOOPPOINTMODE){
                 	ChangeLoopPoint.setLoopPoint(ChangeLoopPoint.getTempLoopPoint());
                 	OnOff.enableMenuButtons();
                 	GUI.currentMode = Modes.PERFORMANCEMODE;
                 }
-                if(GUI.currentMode == Modes.CHANGELAYERMODE){
+	    		else if(GUI.currentMode == Modes.CHANGELAYERMODE){
                 	ChangeLayer.setCurrentLayer(ChangeLayer.getTempLayer());
                 	ChangeLayer.loadLayer(ChangeLayer.getCurrentLayer());
                 	OnOff.enableMenuButtons();
                 	GUI.currentMode = Modes.PERFORMANCEMODE;
                 }
-                if(GUI.currentMode == Modes.SAVECONFIGURATIONMODE){
+	    		else if(GUI.currentMode == Modes.SAVECONFIGURATIONMODE){
                 	SaveLoad.save();
                 	GUI.eraseKeyboard();
                 	OnOff.enableMenuButtons();
                 	GUI.currentMode = Modes.PERFORMANCEMODE;
                 }
-                if(GUI.currentMode == Modes.LOADCONFIGURATIONMODE){
+	    		else if(GUI.currentMode == Modes.LOADCONFIGURATIONMODE){
                 	try{	
                 		SaveLoad.load();
                 		GUI.eraseKeyboard();
@@ -222,13 +234,14 @@ public class ChangeModeListener implements ActionListener{
                     	GUI.currentMode = Modes.PERFORMANCEMODE;
             		}
                 }
+                
                 if(GUI.currentMode == Modes.PERFORMANCEMODE){
                 	GUI.clearMenuButtons(null);
                 	ClockHand.setClockHandVisible(true);
                 	ChangeLayer.loadLayer(ChangeLayer.getCurrentLayer());
-                	break;
+                	
                 }
-	    		
+                break;
         }	
       }catch(Exception exc){
     	  System.exit(0);

@@ -14,6 +14,7 @@ public class ShopBoy {
 	
 	private static String[] songs={"smoke","test"};
 	private static int counter = 0;
+	private static Timer timer;
 	
 	public static void playShopBoy(){
 		 ActionListener actionListener = new ActionListener() {
@@ -23,9 +24,13 @@ public class ShopBoy {
 	                if(counter==songs.length){counter=0;}
 	            }
 	        };
-	        Timer timer = new Timer( 30000, actionListener );
+	        timer = new Timer( 30000, actionListener );
 	        timer.setInitialDelay(0);
 	        timer.start();
 	        
+	}
+	
+	public static void stop(){
+		timer.stop();
 	}
 }
