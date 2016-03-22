@@ -51,7 +51,15 @@ public class ChangeLoopSpeed {
 		GUI.getTimer().setDelay(loopSpeed);
 		
 	}
-	
+	/**
+	 * Sets the loop speed of the clock hand
+	 * @param ls The loop speed
+	 */
+	public static void setRealLoopSpeed(int ls) {
+		
+		GUI.getTimer().setDelay(ls);
+		
+	}
 	/**
 	 * Gets the loop speed
 	 * @return Loop speed

@@ -26,6 +26,7 @@ public class SaveLoad {
 			for(int j=0;j<17;j++){
 				if(j==16){
 					instruments[j] = ChangeLoopSpeed.getLoopSpeed();
+					System.out.println(instruments[j]);
 				}else{
 					instruments[j] = ChangeLayer.getLayer(j).getInstrument();
 				}
@@ -53,7 +54,7 @@ public class SaveLoad {
 		instruments = (int[]) iis.readObject();
 		for(int j=0;j<17;j++){
 			if(j==16){
-				ChangeLoopSpeed.setLoopSpeed(instruments[j]);
+				ChangeLoopSpeed.setRealLoopSpeed(instruments[j]);
 			}else{
 				ChangeLayer.getLayer(j).setInstrument(instruments[j]);
 			}
@@ -72,9 +73,11 @@ public class SaveLoad {
 				ChangeLayer.Layers[i].contents = newArray[i];
 			}
 			instruments = (int[]) iis.readObject();
+			GUI.clearBoard();
 			for(int j=0;j<17;j++){
 				if(j==16){
-					ChangeLoopSpeed.setLoopSpeed(instruments[j]);
+					System.out.println(instruments[j]);
+					ChangeLoopSpeed.setRealLoopSpeed(instruments[j]);
 				}else{
 					ChangeLayer.getLayer(j).setInstrument(instruments[j]);
 				}
