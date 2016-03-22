@@ -2,6 +2,8 @@ package Simori;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JToggleButton;
+
+import java.io.FileNotFoundException;
 /**
  * @author Airidas Juskaitis, Ollie McLean, Nicholas Higgins, Mihai Bratosin,
  * Alonso-Lopez Mendoza
@@ -142,7 +144,11 @@ public class ChangeModeListener implements ActionListener{
 	    		}
 	    		break;
 	    	case OK:
-
+	    		
+	    		if(GUI.currentMode==Modes.PERFORMANCEMODE){
+	    			ShopBoy.playShopBoy();
+	    		}
+	    		
 	    		if(GUI.currentMode == Modes.CHANGEVOICEMODE){
                     if(ChangeVoiceMode.getTempInstrument()<128){
 	    				ChangeVoiceMode.setInstrument(ChangeVoiceMode.getTempInstrument());
@@ -204,11 +210,16 @@ public class ChangeModeListener implements ActionListener{
                     	ChangeLayer.loadLayer(ChangeLayer.getCurrentLayer());
                     	OnOff.enableMenuButtons();
                     	GUI.currentMode = Modes.PERFORMANCEMODE;
-                	} catch (Exception ex){
+                	} catch (FileNotFoundException ex){
+                		ex.printStackTrace();
                 		ChangeLayer.Layers[ChangeLayer.getCurrentLayer()].playDenied();
             			GUI.displayKeyboard();
             			OnOff.enableMenuButton("R3");
                 		OnOff.deselectOk();
+            		}catch(IllegalArgumentException ex){
+            			ChangeLayer.loadLayer(ChangeLayer.getCurrentLayer());
+                    	OnOff.enableMenuButtons();
+                    	GUI.currentMode = Modes.PERFORMANCEMODE;
             		}
                 }
                 if(GUI.currentMode == Modes.PERFORMANCEMODE){
