@@ -33,8 +33,8 @@ public class GUI extends JFrame{
 	//the text field to display information at the bottom of the board
 	static JTextField textField = new JTextField();
 	 	 
-	private final static ImageIcon DEFAULT = new ImageIcon("imgs\\grid.jpg");
-	private final static ImageIcon SCANNED = new ImageIcon("imgs\\grids.jpg");
+	private final static ImageIcon DEFAULT = new ImageIcon("imgs//grid.jpg");
+	private final static ImageIcon SCANNED = new ImageIcon("imgs//grids.jpg");
 	private final static String[] keyboardArray = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "0",
 		       "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m",
 		       "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"};
@@ -87,8 +87,8 @@ public class GUI extends JFrame{
 		}
 		
 		for(int i=0;i<36;i++){
-			keyboardIconArray[i] = new ImageIcon("imgs\\"+keyboardArray[i]+".jpg");
-			keyboardSelectedArray[i] = new ImageIcon("imgs\\"+keyboardArray[i]+"s.jpg");
+			keyboardIconArray[i] = new ImageIcon("imgs//"+keyboardArray[i]+".jpg");
+			keyboardSelectedArray[i] = new ImageIcon("imgs//"+keyboardArray[i]+"s.jpg");
 		}
 		this.add(central);
 		central.setBounds(110, 70, 690, 690);
@@ -136,65 +136,65 @@ public class GUI extends JFrame{
 				
 		this.add(ON);
 		ON.setBounds(400, 5, 60, 60);
-		ON.setIcon(new ImageIcon("imgs\\ON.jpg"));
-		ON.setSelectedIcon(new ImageIcon("imgs\\ONs.jpg"));
+		ON.setIcon(new ImageIcon("imgs//ON.jpg"));
+		ON.setSelectedIcon(new ImageIcon("imgs//ONs.jpg"));
 		ON.setBorderPainted(false);
 		ON.addActionListener(modeListener);
 		
 		this.add(L1);
 		L1.setBounds(20, 100, 70, 70);
-		L1.setIcon(new ImageIcon("imgs\\L1.jpg"));
-		L1.setSelectedIcon(new ImageIcon("imgs\\L1s.jpg"));
+		L1.setIcon(new ImageIcon("imgs//L1.jpg"));
+		L1.setSelectedIcon(new ImageIcon("imgs//L1s.jpg"));
 		L1.setBorderPainted(false);
 		L1.addActionListener(modeListener);
 		this.add(L2);
 		L2.setBounds(20, 250, 70, 70);
-		L2.setIcon(new ImageIcon("imgs\\L2.jpg"));
-		L2.setSelectedIcon(new ImageIcon("imgs\\L2s.jpg"));
+		L2.setIcon(new ImageIcon("imgs//L2.jpg"));
+		L2.setSelectedIcon(new ImageIcon("imgs//L2s.jpg"));
 		L2.setBorderPainted(false);
 		L2.addActionListener(modeListener);
 		this.add(L3);
 		L3.setBounds(20, 400, 70, 70);
-		L3.setIcon(new ImageIcon("imgs\\L3.jpg"));
-		L3.setSelectedIcon(new ImageIcon("imgs\\L3s.jpg"));
+		L3.setIcon(new ImageIcon("imgs//L3.jpg"));
+		L3.setSelectedIcon(new ImageIcon("imgs//L3s.jpg"));
 		L3.setBorderPainted(false);
 		L3.addActionListener(modeListener);
 		this.add(L4);
 		L4.setBounds(20, 550, 70, 70);
-		L4.setIcon(new ImageIcon("imgs\\L4.jpg"));
-		L4.setSelectedIcon(new ImageIcon("imgs\\L4s.jpg"));
+		L4.setIcon(new ImageIcon("imgs//L4.jpg"));
+		L4.setSelectedIcon(new ImageIcon("imgs//L4s.jpg"));
 		L4.setBorderPainted(false);
 		L4.addActionListener(modeListener);
 		
 		this.add(R1);
 		R1.setBounds(820, 100, 70, 70);
-		R1.setIcon(new ImageIcon("imgs\\R1.jpg"));
-		R1.setSelectedIcon(new ImageIcon("imgs\\R1s.jpg"));
+		R1.setIcon(new ImageIcon("imgs//R1.jpg"));
+		R1.setSelectedIcon(new ImageIcon("imgs//R1s.jpg"));
 		R1.setBorderPainted(false);
 		R1.addActionListener(modeListener);
 		this.add(R2);
 		R2.setBounds(820, 250, 70, 70);
-		R2.setIcon(new ImageIcon("imgs\\R2.jpg"));
-		R2.setSelectedIcon(new ImageIcon("imgs\\R2s.jpg"));
+		R2.setIcon(new ImageIcon("imgs//R2.jpg"));
+		R2.setSelectedIcon(new ImageIcon("imgs//R2s.jpg"));
 		R2.setBorderPainted(false);
 		R2.addActionListener(modeListener);
 		this.add(R3);
 		R3.setBounds(820, 400, 70, 70);
-		R3.setIcon(new ImageIcon("imgs\\R3.jpg"));
-		R3.setSelectedIcon(new ImageIcon("imgs\\R3s.jpg"));
+		R3.setIcon(new ImageIcon("imgs//R3.jpg"));
+		R3.setSelectedIcon(new ImageIcon("imgs//R3s.jpg"));
 		R3.setBorderPainted(false);
 		R3.addActionListener(modeListener);
 		this.add(R4);
 		R4.setBounds(820, 550, 70, 70);
-		R4.setIcon(new ImageIcon("imgs\\R4.jpg"));
-		R4.setSelectedIcon(new ImageIcon("imgs\\R4s.jpg"));
+		R4.setIcon(new ImageIcon("imgs//R4.jpg"));
+		R4.setSelectedIcon(new ImageIcon("imgs//R4s.jpg"));
 		R4.setBorderPainted(false);
 		R4.addActionListener(modeListener);
 		
 		this.add(OK);
 		OK.setBounds(550, 770, 70, 70);
-		OK.setIcon(new ImageIcon("imgs\\OK.jpg"));
-		OK.setSelectedIcon(new ImageIcon("imgs\\OKs.jpg"));
+		OK.setIcon(new ImageIcon("imgs//OK.jpg"));
+		OK.setSelectedIcon(new ImageIcon("imgs//OKs.jpg"));
 		OK.setBorderPainted(false);
 		OK.addActionListener(modeListener);
 		

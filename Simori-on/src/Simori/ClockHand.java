@@ -12,8 +12,8 @@ import javax.swing.Timer;
  */
 public class ClockHand {
 	
-	private final static ImageIcon DEFAULT = new ImageIcon("imgs\\grid.jpg");
-	private final static ImageIcon SCANNED = new ImageIcon("imgs\\grids.jpg");
+	private final static ImageIcon DEFAULT = new ImageIcon("imgs//grid.jpg");
+	private final static ImageIcon SCANNED = new ImageIcon("imgs//grids.jpg");
 	
 	private static boolean clockHandVisible;
 	/**
