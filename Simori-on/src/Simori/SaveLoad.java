@@ -41,28 +41,24 @@ public class SaveLoad {
 	 * Loads the contents of the specified file into the layers of the running
 	 * system
 	 */
-	public static void load() {
+	public static void load() throws Exception{
 		Boolean[][][] newArray = new Boolean[16][16][16];
 		int[] instruments = new int[17];
-		try{
-			FileInputStream fis = new FileInputStream(GUI.textField.getText() + ".song");
-			ObjectInputStream iis = new ObjectInputStream(fis);
-			newArray = (Boolean[][][]) iis.readObject();
-			for(int i=0;i<16;i++){
-				ChangeLayer.Layers[i].contents = newArray[i];
+		FileInputStream fis = new FileInputStream(GUI.textField.getText() + ".song");
+		ObjectInputStream iis = new ObjectInputStream(fis);
+		newArray = (Boolean[][][]) iis.readObject();
+		for(int i=0;i<16;i++){
+			ChangeLayer.Layers[i].contents = newArray[i];
+		}
+		instruments = (int[]) iis.readObject();
+		for(int j=0;j<17;j++){
+			if(j==16){
+				ChangeLoopSpeed.setLoopSpeed(instruments[j]);
+			}else{
+				ChangeLayer.getLayer(j).setInstrument(instruments[j]);
 			}
-			instruments = (int[]) iis.readObject();
-			for(int j=0;j<17;j++){
-				if(j==16){
-					ChangeLoopSpeed.setLoopSpeed(instruments[j]);
-				}else{
-					ChangeLayer.getLayer(j).setInstrument(instruments[j]);
-				}
-			}
-			ChangeLayer.loadLayer(ChangeLayer.getCurrentLayer());
-		} catch (Exception e){
-			e.printStackTrace();
-		}		
+		}
+		ChangeLayer.loadLayer(ChangeLayer.getCurrentLayer());		
 	}
 	
 	public static void load(String s) {

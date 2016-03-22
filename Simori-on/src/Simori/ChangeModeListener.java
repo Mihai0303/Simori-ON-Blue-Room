@@ -16,7 +16,8 @@ public class ChangeModeListener implements ActionListener{
 	  */
     @Override
     public void actionPerformed(ActionEvent e) {
-        JToggleButton button = (JToggleButton) e.getSource();
+      try{  
+    	JToggleButton button = (JToggleButton) e.getSource();
         if(GUI.currentMode != Modes.PERFORMANCEMODE) GUI.clearBoard();
         	
         
@@ -143,39 +144,83 @@ public class ChangeModeListener implements ActionListener{
 	    	case OK:
 
 	    		if(GUI.currentMode == Modes.CHANGEVOICEMODE){
-                    ChangeVoiceMode.setInstrument(ChangeVoiceMode.getTempInstrument());
+                    if(ChangeVoiceMode.getTempInstrument()<128){
+	    				ChangeVoiceMode.setInstrument(ChangeVoiceMode.getTempInstrument());
+	    				OnOff.enableMenuButtons();
+	    				ChangeLayer.Layers[ChangeLayer.getCurrentLayer()].playAccepted();
+	                	GUI.currentMode = Modes.PERFORMANCEMODE;
+	    			}else{
+        				ChangeLayer.Layers[ChangeLayer.getCurrentLayer()].playDenied();
+        				OnOff.enableMenuButton("L1");
+        				OnOff.deselectOk();
+        			}
                 }
                 if(GUI.currentMode == Modes.CHANGEVELOCITYMODE){
-                    ChangeVelocity.setVelocity(ChangeVelocity.getTempVelocity());
+                	if(ChangeVelocity.getTempVelocity()<128){
+                		ChangeVelocity.setVelocity(ChangeVelocity.getTempVelocity());
+                		OnOff.enableMenuButtons();
+                		ChangeLayer.Layers[ChangeLayer.getCurrentLayer()].playAccepted();
+                		GUI.currentMode = Modes.PERFORMANCEMODE;
+                	}else{
+                		ChangeLayer.Layers[ChangeLayer.getCurrentLayer()].playDenied();
+                		OnOff.enableMenuButton("L2");
+                		OnOff.deselectOk();
+                	}
                 }
                 if(GUI.currentMode == Modes.CHANGELOOPSPEEDMODE){
-                    ChangeLoopSpeed.setLoopSpeed(ChangeLoopSpeed.getTempLoopSpeed());
+                    if(ChangeLoopSpeed.getTempLoopSpeed()<160){
+                    	ChangeLoopSpeed.setLoopSpeed(ChangeLoopSpeed.getTempLoopSpeed());
+                    	OnOff.enableMenuButtons();
+                    	ChangeLayer.Layers[ChangeLayer.getCurrentLayer()].playAccepted();
+                    	GUI.currentMode = Modes.PERFORMANCEMODE;
+                    }else{
+                    	ChangeLayer.Layers[ChangeLayer.getCurrentLayer()].playDenied();
+                		OnOff.enableMenuButton("L3");
+                		OnOff.deselectOk();
+                    }
                 }
                 if(GUI.currentMode == Modes.CHANGELOOPPOINTMODE){
                 	ChangeLoopPoint.setLoopPoint(ChangeLoopPoint.getTempLoopPoint());
+                	OnOff.enableMenuButtons();
+                	GUI.currentMode = Modes.PERFORMANCEMODE;
                 }
                 if(GUI.currentMode == Modes.CHANGELAYERMODE){
                 	ChangeLayer.setCurrentLayer(ChangeLayer.getTempLayer());
                 	ChangeLayer.loadLayer(ChangeLayer.getCurrentLayer());
+                	OnOff.enableMenuButtons();
+                	GUI.currentMode = Modes.PERFORMANCEMODE;
                 }
                 if(GUI.currentMode == Modes.SAVECONFIGURATIONMODE){
                 	SaveLoad.save();
                 	GUI.eraseKeyboard();
-                }
-                if(GUI.currentMode == Modes.LOADCONFIGURATIONMODE){
-                	SaveLoad.load();
-                	GUI.eraseKeyboard();
-                	ChangeLayer.loadLayer(ChangeLayer.getCurrentLayer());
-                }
-                if(GUI.currentMode!= Modes.ONOFFMODE){
                 	OnOff.enableMenuButtons();
                 	GUI.currentMode = Modes.PERFORMANCEMODE;
                 }
-                GUI.clearMenuButtons(null);
-                ClockHand.setClockHandVisible(true);
-                ChangeLayer.loadLayer(ChangeLayer.getCurrentLayer());
-	    		break;
+                if(GUI.currentMode == Modes.LOADCONFIGURATIONMODE){
+                	try{	
+                		SaveLoad.load();
+                		GUI.eraseKeyboard();
+                		ChangeLayer.Layers[ChangeLayer.getCurrentLayer()].playAccepted();
+                    	ChangeLayer.loadLayer(ChangeLayer.getCurrentLayer());
+                    	OnOff.enableMenuButtons();
+                    	GUI.currentMode = Modes.PERFORMANCEMODE;
+                	} catch (Exception ex){
+                		ChangeLayer.Layers[ChangeLayer.getCurrentLayer()].playDenied();
+            			GUI.displayKeyboard();
+            			OnOff.enableMenuButton("R3");
+                		OnOff.deselectOk();
+            		}
+                }
+                if(GUI.currentMode == Modes.PERFORMANCEMODE){
+                	GUI.clearMenuButtons(null);
+                	ClockHand.setClockHandVisible(true);
+                	ChangeLayer.loadLayer(ChangeLayer.getCurrentLayer());
+                	break;
+                }
 	    		
         }	
+      }catch(Exception exc){
+    	  System.exit(0);
+      }
     }
 }

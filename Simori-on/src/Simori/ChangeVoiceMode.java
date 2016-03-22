@@ -18,19 +18,18 @@ public class ChangeVoiceMode {
 	 */
 	public static void setTempInstrument(int x, int y) {
 		GUI.clearBoard();
+		String a;
 		for(int i = 0; i < GUI.display.length; i++){
 			for(int j = 0; j < GUI.display[i].length; j++){
 				if(j==x || i == y){
 					GUI.display[i][j].setSelected(true);
 				}
 				if(j==x && i == y){
-					if(x+y*16<128){
-						tempInstrument = j+i*16;
-						GUI.textField.setText(GUI.instruments[j+i*16].getName());
-					}
-					else{
-						GUI.textField.setText("No instrument");
-					}
+					tempInstrument = j+i*16;
+					if(j+i*16<128){
+						a = GUI.instruments[j+i*16].getName();
+					}else{ a ="No instrument";}
+					GUI.textField.setText(a);
 				}
 			}
 		}

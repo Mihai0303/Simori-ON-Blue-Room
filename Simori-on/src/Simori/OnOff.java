@@ -16,6 +16,18 @@ public class OnOff {
 		}
 	}
 	
+	
+	/**
+	 * Enables one of the menu buttons/
+	 * @param text The text of the enabled button
+	 */
+	public static void enableMenuButton(String text){
+		for(JToggleButton menuButton : GUI.getMenuButtons()){
+			if(menuButton.getToolTipText().equals(text))
+				menuButton.setEnabled(true);
+		}
+	}
+	
 	/**
 	 * Disables all the buttons on the board except for the
 	 * ON button, OK button and the button passed as a parameter
@@ -26,8 +38,14 @@ public class OnOff {
 		for(int i=1;i<GUI.getMenuButtons().length-1;i++){
 			if(!GUI.getMenuButtons()[i].equals(button))
 				GUI.getMenuButtons()[i].setEnabled(false);
-		}
+		}	
+	}
 	
+	public static void deselectOk(){
+		for(JToggleButton menuButton : GUI.getMenuButtons()){
+			if(menuButton.getToolTipText().equals("OK"))
+				menuButton.setSelected(false);
+		}
 	}
 	
 	/**

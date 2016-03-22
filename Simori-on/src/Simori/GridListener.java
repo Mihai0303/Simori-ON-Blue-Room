@@ -39,10 +39,10 @@ public class GridListener implements ActionListener{
         			ChangeLayer.getLayer(ChangeLayer.getCurrentLayer()).setContents(x,y,false);
         		break;
         	case CHANGEVOICEMODE:
-        		ChangeVoiceMode.setTempInstrument(x,y);
+        			ChangeVoiceMode.setTempInstrument(x,y);
         		break;
         	case CHANGEVELOCITYMODE:
-        		ChangeVelocity.setTempVelocity(x, y);
+       			ChangeVelocity.setTempVelocity(x, y);
         		break;
         	case CHANGELOOPSPEEDMODE:
         		ChangeLoopSpeed.setTempLoopSpeed(x,y);

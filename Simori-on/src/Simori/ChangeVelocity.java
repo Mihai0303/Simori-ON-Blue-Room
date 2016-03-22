@@ -16,25 +16,20 @@ public class ChangeVelocity {
 	 * @param y The y coordinate of the button pressed - the y-th row
 	 */
 	public static void setTempVelocity(int x, int y) {
-		GUI.clearBoard();          
-		 // Set the temporary velocity to the old value of the velocity
-		 // so if the temp is not acceptable we can go back to the old one
-		 tempVelocity = velocity;            
-		 // If the temporary velocity is in the accepted range (<127)
-		 if(x+y*16<=127){
-		     // Set the temporary velocity and change the display
-		     tempVelocity = x+y*16;
-		     GUI.textField.setText(String.valueOf(tempVelocity));
-		         
-		     // Sets the buttons on the same row and column to selected
-		     for(int i = 0; i < GUI.display.length; i++)
-		         for(int j = 0; j < GUI.display[i].length; j++)
-		             if(i*16+j==tempVelocity || j==x || i==y)
-		            	 GUI.display[i][j].setSelected(true);
+		GUI.clearBoard();     
+		String a;
+		// Set the temporary velocity and change the display
+		tempVelocity = x+y*16;
+		GUI.textField.setText(String.valueOf(tempVelocity));
+		if(x+y*16>128){
+			 GUI.textField.setText("Not legal");
 		 }
-		 else
-			 GUI.textField.setText(String.valueOf(velocity));
 		
+		// Sets the buttons on the same row and column to selected
+		for(int i = 0; i < GUI.display.length; i++)
+			for(int j = 0; j < GUI.display[i].length; j++)
+				if(i*16+j==tempVelocity || j==x || i==y)
+					GUI.display[i][j].setSelected(true);
 	}
 	
 	/**

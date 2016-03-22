@@ -162,13 +162,13 @@ public class Layer implements Runnable {
 	 */
 	private void playStart(){	
 		channels[1].programChange(52);
-		channels[1].noteOn(45, velocity);
+		channels[1].noteOn(45, velocity+60);
 		try {Thread.sleep(200);}
 		catch (InterruptedException e) {e.printStackTrace();}
-		channels[1].noteOn(50, velocity);
+		channels[1].noteOn(50, velocity+60);
 		try {Thread.sleep(200);}
 		catch (InterruptedException e) {e.printStackTrace();}
-		channels[1].noteOn(53, velocity);
+		channels[1].noteOn(53, velocity+60);
 		channels[1].allNotesOff();	
 	}
 	
@@ -179,13 +179,13 @@ public class Layer implements Runnable {
 		try {Thread.sleep(200);}
 		catch (InterruptedException e) {e.printStackTrace();}
 		channels[1].programChange(52);
-		channels[1].noteOn(45, velocity);
+		channels[1].noteOn(45, velocity+60);
 		try {Thread.sleep(200);}
 		catch (InterruptedException e) {e.printStackTrace();}
-		channels[1].noteOn(50, velocity);
+		channels[1].noteOn(50, velocity+60);
 		try {Thread.sleep(200);}
 		catch (InterruptedException e) {e.printStackTrace();}
-		channels[1].noteOn(55, velocity);
+		channels[1].noteOn(55, velocity+60);
 		channels[1].allNotesOff();
 	}
 	
@@ -193,8 +193,23 @@ public class Layer implements Runnable {
 	 * Plays a sound when the user is denied a value in one of the modes
 	 */
 	public void playDenied(){
-		channels[1].programChange(111);
-		channels[1].noteOn(10, velocity);
+		try {Thread.sleep(200);}
+		catch (InterruptedException e) {e.printStackTrace();}
+		channels[1].programChange(52);
+		channels[1].noteOn(55, velocity+80);
+		channels[1].allNotesOff();
+	}
+	
+	/**
+	 * Play a sound when the user introduces a valid value
+	 * in one of the modes
+	 */
+	public void playAccepted(){
+		try {Thread.sleep(200);}
+		catch (InterruptedException e) {e.printStackTrace();}
+		channels[1].programChange(52);
+		channels[1].noteOn(55, velocity+80);
+		channels[1].allNotesOff();
 	}
 }
 

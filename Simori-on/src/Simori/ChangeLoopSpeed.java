@@ -18,19 +18,18 @@ public class ChangeLoopSpeed {
 	 */
 	public static void setTempLoopSpeed(int x, int y) {
 		GUI.clearBoard();
+		String a;
 		 tempLoopSpeed = loopSpeed;
 		 
-		 if(x+y*16<160){
-		     tempLoopSpeed = x+y*16;
-		     GUI.textField.setText(String.valueOf(tempLoopSpeed));
-		     
-		     for(int i=0;i<GUI.display.length;i++)
-		         for(int j=0;j<GUI.display[i].length;j++)
-		             if(j==x || i==y)
-		            	 GUI.display[i][j].setSelected(true);
+		 tempLoopSpeed = x+y*16;
+		 GUI.textField.setText(String.valueOf(tempLoopSpeed));
+		 if(x+y*16>160){
+			 GUI.textField.setText("Not legal");
 		 }
-		 else
-			 GUI.textField.setText(String.valueOf(loopSpeed));
+		 for(int i=0;i<GUI.display.length;i++)
+			 for(int j=0;j<GUI.display[i].length;j++)
+				 if(j==x || i==y)
+					 GUI.display[i][j].setSelected(true);
 		
 	}
 	
