@@ -12,7 +12,7 @@ import java.awt.event.ActionListener;
  */
 public class ShopBoy {
 	
-	private static String[] songs={"smoke","test"};
+	private static String[] songs={"smoke","chain", "money"};
 	private static int counter = 0;
 	private static Timer timer;
 	
