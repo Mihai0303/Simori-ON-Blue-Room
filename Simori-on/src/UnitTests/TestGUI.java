@@ -12,16 +12,6 @@ import Simori.GUI;
 public class TestGUI {
 	
 	private GUI a;
-	private final int ONOFFMODE = 0;
-	private final int PERFORMANCEMODE = 1;
-//	private final int CHANGEVOICEMODE = 2;
-//	private final int CHANGEVELOCITYMODE = 3;
-//	private final int CHANGELOOPSPEEDMODE = 4;
-//	private final int CHANGELOOPPOINTMODE = 5;
-//	private final int CHANGELAYERMODE = 6;
-	private final int SAVECONFIGURATIONMODE = 7;
-	private final int LOADCONFIGURATIONMODE = 8;
-	private final int SLAVEMASTERMODE = 9;	
 
 	/**
 	 * @throws java.lang.Exception

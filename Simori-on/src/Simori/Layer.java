@@ -211,5 +211,9 @@ public class Layer implements Runnable {
 		channels[1].noteOn(55, velocity+80);
 		channels[1].allNotesOff();
 	}
+
+	public int getVelocity() {
+		return velocity;
+	}
 }
 

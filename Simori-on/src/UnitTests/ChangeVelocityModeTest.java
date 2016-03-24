@@ -55,10 +55,16 @@ public class ChangeVelocityModeTest {
 	public final void testSetTempVelocityBiggerThanMax() {
 		GUI.setCurrentMode(Modes.CHANGEVELOCITYMODE);
 		ChangeVelocity.setTempVelocity(14, 15);
-		assertEquals(ChangeVelocity.getTempVelocity(),0);
+		assertEquals(ChangeVelocity.getTempVelocity(),254);
 	}
 
-
-	
+	@Test
+	public final void testSetVelocityBiggerThanMax() {
+		GUI.setCurrentMode(Modes.CHANGEVELOCITYMODE);
+		ChangeVelocity.setVelocity(140);
+		
+		//Default velocity at the start of the board
+		assertEquals(ChangeVelocity.getVelocity(),40);
+	}
 	
 }

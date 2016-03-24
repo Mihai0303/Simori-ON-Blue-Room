@@ -47,7 +47,7 @@ public class ChangeVoiceMode {
 	 * @param ch The instrument playing - integer is a midi encoding
 	 */
 	public static void setInstrument(int ch) {
-		ChangeLayer.Layers[ChangeLayer.getCurrentLayer()].setInstrument(ch);
+		if(ch<129)ChangeLayer.Layers[ChangeLayer.getCurrentLayer()].setInstrument(ch);
 	}
 	
 	

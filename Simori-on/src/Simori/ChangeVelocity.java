@@ -45,7 +45,11 @@ public class ChangeVelocity {
 	 * @param vl The current velocity
 	 */
 	public static void setVelocity(int vl) {
-		ChangeLayer.getLayer(ChangeLayer.getCurrentLayer()).setVelocity(vl);
+		if(vl<129) ChangeLayer.getLayer(ChangeLayer.getCurrentLayer()).setVelocity(vl);
+	}
+	
+	public static int getVelocity(){
+		return ChangeLayer.getLayer(ChangeLayer.getCurrentLayer()).getVelocity();
 	}
 	
 }

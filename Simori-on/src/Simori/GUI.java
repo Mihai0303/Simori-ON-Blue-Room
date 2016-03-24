@@ -332,4 +332,20 @@ public class GUI extends JFrame{
 	public static void setTimer(Timer t){
 		timer = t;
 	}
+	
+	/**
+	 * Sets a button of the display selected or 
+	 * unselected
+	 * @param b True for selected and false for unselected
+	 */
+	public static void setButtonSelected(int x, int y, boolean b){
+		display[x][y].setSelected(b);
+	}
+	
+	/**
+	 * Returns true if a button is selected
+	 */
+	public static Boolean getButtonSelected(int x, int y){
+		return display[x][y].isSelected();
+	}
 }

@@ -42,8 +42,8 @@ public class ChangeLoopSpeedTest {
 	@Test
 	public final void testSetTempLoopSpeed() {
 		GUI.setCurrentMode(Modes.CHANGELOOPSPEEDMODE);
-		ChangeLoopSpeed.setTempLoopSpeed(1, 1);
-		assertEquals(ChangeLoopSpeed.getTempLoopSpeed(),17);
+		ChangeLoopSpeed.setTempLoopSpeed(0, 0);
+		assertEquals(ChangeLoopSpeed.getTempLoopSpeed(),0);
 	}
 	
 	/**
@@ -56,7 +56,10 @@ public class ChangeLoopSpeedTest {
 	public final void testSetTempLoopSpeedExceedMax() {
 		GUI.setCurrentMode(Modes.CHANGELOOPSPEEDMODE);
 		ChangeLoopSpeed.setTempLoopSpeed(14, 14);
-		assertEquals(ChangeLoopSpeed.getTempLoopSpeed(),0);
+		assertEquals(ChangeLoopSpeed.getTempLoopSpeed(),238);
+		ChangeLoopSpeed.setLoopSpeed(238);
+		//Should be the initial loop speed
+		assertEquals(ChangeLoopSpeed.getLoopSpeed(), 100);
 	}
 	
 }

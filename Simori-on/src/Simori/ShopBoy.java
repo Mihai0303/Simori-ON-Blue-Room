@@ -15,9 +15,14 @@ public class ShopBoy {
 	private static String[] songs={"smoke","chain", "money"};
 	private static int counter = 0;
 	private static Timer timer;
+	private static ActionListener actionListener; 
 	
+	/**
+	 * Initialises an action listener which loads the songs
+	 * and sets a timer to switch between them every 30 seconds
+	 */
 	public static void playShopBoy(){
-		 ActionListener actionListener = new ActionListener() {
+		 actionListener = new ActionListener() {
 	            public void actionPerformed(ActionEvent actionEvent) {
 	                SaveLoad.load(songs[counter]);
 	                counter++;
@@ -30,7 +35,12 @@ public class ShopBoy {
 	        
 	}
 	
+	/**
+	 * Stops the timer for ShopBoy mode
+	 * and removes the listener which loads the songs
+	 */
 	public static void stop(){
 		timer.stop();
+		timer.removeActionListener(actionListener);
 	}
 }

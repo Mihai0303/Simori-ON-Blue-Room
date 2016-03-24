@@ -43,7 +43,7 @@ public class ChangeLoopPoint {
 	 * Sets the loop point to the value given
 	 */
 	public static void setLoopPoint(int p){
-		loopPoint = p;
+		if(p<16)loopPoint = p;
 	}
 	
 }

@@ -46,20 +46,21 @@ public class ChangeLoopSpeed {
 	 * @param ls The loop speed
 	 */
 	public static void setLoopSpeed(int ls) {
-		int nls = 159 - ls;
-		loopSpeed = nls*3;
-		GUI.getTimer().setDelay(loopSpeed);
-		
+		if(ls<160){
+			int nls = 159 - ls;
+			loopSpeed = nls*3;
+			GUI.getTimer().setDelay(loopSpeed);
+		}		
 	}
+	
 	/**
 	 * Sets the loop speed of the clock hand
 	 * @param ls The loop speed
 	 */
-	public static void setRealLoopSpeed(int ls) {
-		
-		GUI.getTimer().setDelay(ls);
-		
+	public static void setRealLoopSpeed(int ls) {		
+		if(ls<160) GUI.getTimer().setDelay(ls);		
 	}
+	
 	/**
 	 * Gets the loop speed
 	 * @return Loop speed

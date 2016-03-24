@@ -15,9 +15,7 @@ import Simori.Modes;
  */
 public class ChangeLayerTest {
 	
-	private GUI a;
-	private final int CHANGELAYERMODE = 6;
-	
+	private GUI a;	
 	/**
 	 * @throws java.lang.Exception
 	 */
@@ -46,6 +44,29 @@ public class ChangeLayerTest {
 		GUI.setCurrentMode(Modes.CHANGELAYERMODE);
 		ChangeLayer.setTempLayer(1, 1);
 		assertEquals(ChangeLayer.getTempLayer(),1);
+	}
+	
+	/**
+	 * Tests setTempLayer with an index out of bounds
+	 */
+	@Test(expected=ArrayIndexOutOfBoundsException.class)
+	public final void testSetTempLayer_OutOfBounds(){
+		GUI.setCurrentMode(Modes.CHANGELAYERMODE);
+		ChangeLayer.setTempLayer(17, 17);
+		assertEquals(ChangeLayer.getTempLayer(),1);
+	}
+	
+	/**
+	 * Tests load layers and the subsequent method
+	 * call (on pressing OK)
+	 */
+	@Test
+	public final void testLoadLayer(){
+		GUI.setCurrentMode(Modes.CHANGELAYERMODE);
+		ChangeLayer.loadLayer(2);
+		assertEquals(ChangeLayer.getCurrentLayer(),0);
+		ChangeLayer.setCurrentLayer(2);
+		assertEquals(ChangeLayer.getCurrentLayer(),2);
 	}
 	
 }

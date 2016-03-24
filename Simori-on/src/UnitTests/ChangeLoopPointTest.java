@@ -16,7 +16,6 @@ import Simori.Modes;
 public class ChangeLoopPointTest {
 	
 	private GUI a;
-	private final int CHANGELOOPPOINTMODE = 5;
 	
 	/**
 	 * @throws java.lang.Exception
@@ -41,12 +40,40 @@ public class ChangeLoopPointTest {
 	 * the temporary loop point to a value in the allowed range
 	 * 0-15
 	 */
-	@Test
-	
+	@Test	
 	public final void testSetTempLoopPoint() {
 		GUI.setCurrentMode(Modes.CHANGELOOPPOINTMODE);
 		ChangeLoopPoint.setTempLoopPoint(1, 1);
 		assertEquals(ChangeLoopPoint.getTempLoopPoint(),1);
 	}
 	
+	/**
+	 * Tests setLoopPoint with an out of bounds value
+	 */
+	@Test(expected=ArrayIndexOutOfBoundsException.class)
+	public final void testSetTempLoopPoint_OutOfBounds(){
+		GUI.setCurrentMode(Modes.CHANGELOOPPOINTMODE);
+		ChangeLoopPoint.setTempLoopPoint(17, 17);
+	}
+	
+	/**
+	 * Tests if the loop point is set appropriately
+	 */
+	@Test
+	public final void testSetLoopPoint(){
+		GUI.setCurrentMode(Modes.CHANGELOOPPOINTMODE);
+		ChangeLoopPoint.setLoopPoint(15);
+		assertEquals(ChangeLoopPoint.getLoopPoint(),15);
+	}
+	
+	/**
+	 * Tests reaction to bigger than 15 loop point value
+	 * Should keep previous value
+	 */
+	@Test
+	public final void testSetLoopPoint_BiggerValue(){
+		GUI.setCurrentMode(Modes.CHANGELOOPPOINTMODE);
+		ChangeLoopPoint.setLoopPoint(20);
+		assertEquals(ChangeLoopPoint.getLoopPoint(),15);
+	}
 }
